@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //const rotasContratantes = require('.routes/');
 
-const rotaPaginaPrincipal = require('./routes/mainPageRoutes');
+const rotaPaginaPrincipal = require('./route/routePrincipal');
 app.use('/', rotaPaginaPrincipal)
 
 module.exports = app;

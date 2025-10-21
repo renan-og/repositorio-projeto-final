@@ -1,9 +1,11 @@
 const { DataTypes } = require('sequelize');
 const sequelize = rquire('../config/db');
 
-const funcionarios = sequelize.define('funcionarios', {
+const funcionarios = sequelize.define('funcionarios', {//criação do modedlo da tabela de funcionarios 
     id: {
-        type: DataTypes.STRING,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     nome: {

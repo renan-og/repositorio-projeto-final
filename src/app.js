@@ -13,7 +13,8 @@ app.set('views', path.join(__dirname, 'view'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//const rotasFestas = require('./routes/');
+const rotasFestas = require('./route/routeFestas');
+app.use('/festas', rotasFestas);
 
 //const rotasContratantes = require('.routes/');
 

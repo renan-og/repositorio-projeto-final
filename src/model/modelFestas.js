@@ -23,7 +23,9 @@ const festas = dB.define('Festa', {
     contratanteId:{
         type: Sequelize.INTEGER,
 
-    }
+    },
+    local: {type: Sequelize.STRING},
+    qtdConvidados: {type:Sequelize.INTEGER}
 });
 
 module.exports = festas

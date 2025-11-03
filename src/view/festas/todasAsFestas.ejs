@@ -9,6 +9,22 @@
     <script src='main.js'></script>
 </head>
 <body>
-    
+    <h1>Festas para acontecer</h1>
+    <dl>
+        <%
+        if(todasFestas.length != 0){ %><!--caso exista algo na tabela de festas, as exibe-->
+            <% todasFestas.forEach(festa=>{ %>
+                <dt> Contratante: <%- festa.contratanteId %> </dt>
+                <dd>aniversariante: <%- festa.aniversariante %></dd>
+                <dd> Data: <%- festa.data %></dd>
+                <dd> Tema: <%- festa.tema %></dd>
+                <dd> Salão: <%- festa.local %></dd>
+                <dd> Convidados: <%- festa.qtdConvidados %></dd>
+                <dd> Horario: <%- festa.horario%></dd>
+            <% }) %> <% }else{ %><!--se não houver festas agendadas, exibe a mensagem-->
+                <dt>Nenhuma festa agendada</dt>
+                <% } 
+        %>
+    </dl>
 </body>
 </html>

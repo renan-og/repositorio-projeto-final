@@ -17,6 +17,7 @@ const criarFesta = async (req, res) => {
         const local = req.body.local;
         const contratanteId = req.body.contratanteId;
         const qtdConvidados = req.body.qtdConvidados;
+        const aniversariante = req.body.aniversariante;
 
         const novaFesta = await festasModel.create({
             data: data,
@@ -24,12 +25,13 @@ const criarFesta = async (req, res) => {
             contratanteId: contratanteId,
             tema: tema,
             local: local,
-            qtdConvidados: qtdConvidados
+            qtdConvidados: qtdConvidados,
+            aniversariante: aniversariante
         });
         res.status(201).redirect('/festas')
 
     } catch (error) {
-        console.error(`Erro ao criar festa: ${error}`)
+        res.status(500).render(`view/festas/criarFesta`)
     }
 }
 

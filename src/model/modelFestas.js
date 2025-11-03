@@ -22,10 +22,20 @@ const festas = dB.define('Festa', {
     },
     contratanteId:{
         type: Sequelize.INTEGER,
-
+        allowNull: false
     },
-    local: {type: Sequelize.STRING},
-    qtdConvidados: {type:Sequelize.INTEGER}
+    local: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    qtdConvidados: {
+        type:Sequelize.INTEGER,
+        allowNull: false
+    },
+    aniversariante:{
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 });
 
 module.exports = festas

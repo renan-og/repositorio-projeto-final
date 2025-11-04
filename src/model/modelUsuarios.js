@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/bd');
-const festas = require('./modelFestas')
 
 const usuarios = sequelize.define('usuarios', {//criação do modedlo da tabela de usuarios 
     idUsuario: {
@@ -36,6 +35,5 @@ const usuarios = sequelize.define('usuarios', {//criação do modedlo da tabela 
     timestamps: false
 });
 
-usuarios.hasMany(festas, { foreignKey: 'idUsuario' });
 
 module.exports = usuarios;

@@ -15,23 +15,25 @@ const criarFesta = async (req, res) => {
         const horario = req.body.horario;
         const tema = req.body.tema;
         const local = req.body.local;
-        const contratanteId = req.body.contratanteId;
+        const contratanteId = req.body.idUsuario;
         const qtdConvidados = req.body.qtdConvidados;
         const aniversariante = req.body.aniversariante;
 
         const novaFesta = await festasModel.create({
             data: data,
             horario: horario,
-            contratanteId: contratanteId,
+            idUsuario: idUsuario,
             tema: tema,
             local: local,
             qtdConvidados: qtdConvidados,
             aniversariante: aniversariante
         });
-        res.status(201).redirect('/festas')
+        console.log("funcionou")
+        res.status(201).redirect('/festas/')
 
     } catch (error) {
-        res.status(500).render(`view/festas/criarFesta`)
+        console.log("erro")
+        res.status(500).render(`festas/criarFesta`, { error });
     }
 }
 //apenas para admins do site 

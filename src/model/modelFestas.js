@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const dB = require('../config/bd');
-const usuario = require('./modelUsuarios');
+
 
 const festas = dB.define('Festa', {
     id:{
@@ -38,6 +38,6 @@ const festas = dB.define('Festa', {
         allowNull: false
     },
 });
-festas.belongsTo(usuario, { foreignKey: 'idUsuario' });
+
 
 module.exports = festas

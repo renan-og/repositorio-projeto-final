@@ -12,6 +12,4 @@ router.post('/novaFesta', controllerFestas.criarFesta);
 /*router.get('/editarFestaADMPage', (req, res)=>{//renderizar a pagina de edição
     res.render('festas/editarFestaADM');
 });*/
-
-router.patch('/editarFestaADM', controllerFestas.editarFestasPage);
 module.exports = router;

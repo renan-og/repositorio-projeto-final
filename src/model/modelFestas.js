@@ -36,7 +36,7 @@ const festas = sequelize.define('Festa', {
     aniversariante:{
         type: Sequelize.STRING,
         allowNull: false
-    },
+    }
 });
 
 

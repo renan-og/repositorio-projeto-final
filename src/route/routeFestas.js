@@ -5,7 +5,7 @@ const controllerFestas = require('../controller/controllerFestas');
 
 router.get('/', controllerFestas.festas);
 router.get('/novaFestaPagina', (req, res)=>{//renderizar a pagina de criação
-    res.render('festas/criarFesta');
+    res.render('usuario/criarFesta');
 });
 router.post('/novaFesta', controllerFestas.criarFesta);
 

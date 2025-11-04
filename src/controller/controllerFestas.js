@@ -34,6 +34,12 @@ const criarFesta = async (req, res) => {
         res.status(500).render(`view/festas/criarFesta`)
     }
 }
+//apenas para admins do site 
+const editarFestasPage = async (req,res) => {
+    try {
+        const todasFestas = await festasModel.findAll();
+    };
+}
 
 module.exports = {
     festas,

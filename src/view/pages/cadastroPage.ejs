@@ -3,15 +3,23 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Bem vindo</title>
+    <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
 </head>
 <body>
-    <%- include('../partials/header') %>
+    <%include('../partials/header') %>
     <form action="">
-        <h3>Login</h3>
+        <h3>Para funcionarios</h3>
+        <input type="text" name="email" placeholder="Email">
+        <input type="text" name="usuario" placeholder="Usuario">
+        <input type="password" name="senha" placeholder="Senha">
+        <button type="submit">Entrar</button>
+    </form>
+    <form action="">
+        <h3>Para colaboradores</h3>
+        <input type="text" name="email" placeholder="Email">
         <input type="text" name="usuario" placeholder="Usuario">
         <input type="password" name="senha" placeholder="Senha">
         <button type="submit">Entrar</button>

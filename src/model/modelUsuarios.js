@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 const sequelize = rquire('../config/db');
 
-const funcionarios = sequelize.define('funcionarios', {//criação do modedlo da tabela de funcionarios 
-    id: {
+const usuarios = sequelize.define('usuarios', {//criação do modedlo da tabela de usuarios 
+    idUsuario: {
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,
@@ -35,4 +35,6 @@ const funcionarios = sequelize.define('funcionarios', {//criação do modedlo da
     timestamps: false
 });
 
-module.exports = funcionarios;
+usuarios.hasMany(festas, { foreignKey: 'idUsuario' });
+
+module.exports = usuarios;

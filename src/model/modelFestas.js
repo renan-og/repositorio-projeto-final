@@ -20,7 +20,7 @@ const festas = dB.define('Festa', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    contratanteId:{
+    idUsuario:{
         type: Sequelize.INTEGER,
         allowNull: false
     },
@@ -35,7 +35,8 @@ const festas = dB.define('Festa', {
     aniversariante:{
         type: Sequelize.STRING,
         allowNull: false
-    }
+    },
 });
+festas.belongsTo(usuario, { foreignKey: 'idUsuario' });
 
 module.exports = festas

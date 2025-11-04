@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-const dB = require('../config/bd');
+const sequelize = require('../config/bd');
 
 
-const festas = dB.define('Festa', {
+const festas = sequelize.define('Festa', {
     id:{
         type: Sequelize.INTEGER,
         primaryKey: true,

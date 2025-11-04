@@ -3,9 +3,9 @@ const festasModel = require('../model/modelFestas');
 const festas = async ( req, res ) => {
     try {
         const todasFestas = await festasModel.findAll();
-        res.status(200).render('festas/todasAsFestas', { todasFestas }); //enviar todas as festas a página
+        res.status(200).render('ADM/todasAsFestas', { todasFestas }); //enviar todas as festas a página
     } catch (erro) {
-        res.status(500).render('festas/todasAsFestas', { erro });
+        res.status(500).render('ADM/todasAsFestas', { erro });
     };
 };
 
@@ -15,7 +15,7 @@ const criarFesta = async (req, res) => {
         const horario = req.body.horario;
         const tema = req.body.tema;
         const local = req.body.local;
-        const contratanteId = req.body.idUsuario;
+        const idUsuario = req.body.idUsuario;
         const qtdConvidados = req.body.qtdConvidados;
         const aniversariante = req.body.aniversariante;
 
@@ -29,11 +29,11 @@ const criarFesta = async (req, res) => {
             aniversariante: aniversariante
         });
         console.log("funcionou")
-        res.status(201).redirect('/festas/')
+        res.status(201).render('ADM/todasAsFestas')
 
     } catch (error) {
         console.log("erro")
-        res.status(500).render(`festas/criarFesta`, { error });
+        res.status(500).render(`usuario/criarFesta`, { error });
     }
 }
 //apenas para admins do site 

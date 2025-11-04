@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
-const sequelize = rquire('../config/db');
+const sequelize = require('../config/bd');
+const festas = require('./modelFestas')
 
 const usuarios = sequelize.define('usuarios', {//criação do modedlo da tabela de usuarios 
     idUsuario: {

@@ -38,7 +38,9 @@ const criarFesta = async (req, res) => {
 const editarFestasPage = async (req,res) => {
     try {
         const todasFestas = await festasModel.findAll();
-    };
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 module.exports = {

@@ -29,10 +29,10 @@ const criarFesta = async (req, res) => {
             aniversariante: aniversariante
         });
         console.log("funcionou")
-        res.status(201).render('ADM/todasAsFestas')
+        res.status(201).redirect('/festas/')
 
     } catch (error) {
-        console.log("erro")
+        console.error(error)
         res.status(500).render(`usuario/criarFesta`, { error });
     }
 }

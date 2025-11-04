@@ -25,9 +25,13 @@ const funcionarios = sequelize.define('funcionarios', {//criação do modedlo da
     senha: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    tipo: {//se é funcionário, adm ou contratante 
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, {
-    tableName: 'funcionarios',
+    tableName: 'usuarios',
     timestamps: false
 });
 

@@ -1,4 +1,4 @@
-const funcionarios = require('../model/modelFuncionarios');
+const funcionarios = require('../model/modelUsuarios');
 
 exports.listarFuncionarios = async (req, res) => {
     try {

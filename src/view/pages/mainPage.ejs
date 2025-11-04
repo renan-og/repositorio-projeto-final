@@ -9,6 +9,18 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <h1>PARTY.COM</h1>
+    <%- include('../partials/header') %>
+    <form action="">
+        <h3>Para funcionarios</h3>
+        <input type="text" name="usuario" placeholder="Usuario">
+        <input type="password" name="senha" placeholder="Senha">
+        <button type="submit">Entrar</button>
+    </form>
+    <form action="">
+        <h3>Para colaboradores</h3>
+        <input type="text" name="usuario" placeholder="Usuario">
+        <input type="password" name="senha" placeholder="Senha">
+        <button type="submit">Entrar</button>
+    </form>
 </body>
 </html>

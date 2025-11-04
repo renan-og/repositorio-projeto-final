@@ -1,12 +1,31 @@
-#partytitle{
-    font-size: 500px;
-    font-weight: bolder;
-    font: arial;
-    color: rgb(255, 0, 0)
+*{
+    margin: 0;
+    padding: 0;
 }
-h1{
-    font-size: 500px;
-    font-weight: bolder;
-    font: arial;
-    color: rgb(255, 0, 0)
+header{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+    gap: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#middle{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    height: 100vh;
+}
+#partytitle {
+    font-size: 250px;
+    font-weight: 800;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#subtitle {
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

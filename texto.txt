@@ -1,0 +1,4 @@
+ANOTAÇÕES E OBSERVAÇÕES GERAIS DO PROJETO:
+criar e editar usuarios devem ser funções tanto de adm, pois podem contratar funcionarios e demitir, quanto do prórprio usuario que pode se cadastrar, em caso de cliente, e editar seus dados. 
+Ver usuarios deve ser função apenas de adm, ver tanto clientes quanto funcionarios.
+Editar festas é uma função apenas de adm, pois são eles que gerenciam as festas.

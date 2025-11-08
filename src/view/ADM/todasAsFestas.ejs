@@ -14,13 +14,17 @@
         <%
         if(todasFestas.length != 0){ %><!--caso exista algo na tabela de festas, as exibe-->
             <% todasFestas.forEach(festa=>{ %>
-                <dt> Contratante: <%- festa.idUsuario %> </dt>
-                <dd>aniversariante: <%- festa.aniversariante %></dd>
-                <dd> Data: <%- festa.data %></dd>
-                <dd> Tema: <%- festa.tema %></dd>
-                <dd> Salão: <%- festa.local %></dd>
-                <dd> Convidados: <%- festa.qtdConvidados %></dd>
-                <dd> Horario: <%- festa.horario%></dd>
+                <form action="/editarFesta" method="post">
+                    <input type="text" name="festaId" value="<%- festa.id%>">
+                    <dt> Contratante: <%- festa.idUsuario %> </dt>
+                    <dd>aniversariante: <%- festa.aniversariante %></dd>
+                    <dd> Data: <%- festa.data %></dd>
+                    <dd> Tema: <%- festa.tema %></dd>
+                    <dd> Salão: <%- festa.local %></dd>
+                    <dd> Convidados: <%- festa.qtdConvidados %></dd>
+                    <dd> Horario: <%- festa.horario%></dd>
+                    <button type="submit">Editar</button>
+                </form>
             <% }) %> <% }else{ %><!--se não houver festas agendadas, exibe a mensagem-->
                 <dt>Nenhuma festa agendada</dt>
                 <% } 

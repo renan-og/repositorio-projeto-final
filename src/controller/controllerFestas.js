@@ -39,7 +39,9 @@ const criarFesta = async (req, res) => {
 //apenas para admins do site 
 const editarFestasPage = async (req,res) => {
     try {
+        const id = req.params.festaId;
         const todasFestas = await festasModel.findAll();
+        
     } catch (error) {
         console.log(error);
     }

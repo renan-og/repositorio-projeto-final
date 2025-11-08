@@ -37,17 +37,55 @@ const criarFesta = async (req, res) => {
     }
 }
 //apenas para admins do site 
-const editarFestasPage = async (req,res) => {
+const editarFestasPage = async (req, res) => {
+
+        try {
+            const festaId = parseInt(req.query.festaId)
+
+            const festa = await festasModel.findByPk(festaId);
+
+        const qtdConvidados = festa.qtdConvidados 
+        const horario = festa.horario
+        const data = festa.data
+        res.render('ADM/editarFestaADM', {
+            festaId, 
+            qtdConvidados, 
+            horario, 
+            data
+        });
+    } catch (error) { console.error(error)
+        console.log("Deu erro", error)
+        res.status(500).render('ADM/editarFestaADM', { error });
+    };
+}
+//função que de fato edita a festa
+const atualizarFesta = async (req, res) => {
     try {
-        const id = req.params.festaId;
-        const todasFestas = await festasModel.findAll();
-        
-    } catch (error) {
-        console.log(error);
+        const festaId = parseInt(req.body.festaId);
+        const qtdConvidados = parseInt(req.body.qtdConvidados) 
+        const horario = req.body.horario
+        const data = req.body.data
+
+        const edicao = await festasModel.update({
+            qtdConvidados: qtdConvidados,
+            horario: horario,
+            data: data
+        }, {
+            where: {
+                id: festaId
+            }
+        });
+        res.status(200).render('ADM/editarFestaADM', { mensagem: "Festa atualizada com sucesso!", festaId, qtdConvidados, horario, data });
+        console.log("Festa atualizada com sucesso!");
+    } catch(error){
+        console.error(error);
+        res.status(500).render('ADM/editarFestaADM', { error });
     }
 }
 
 module.exports = {
     festas,
-    criarFesta
-};
+    criarFesta,
+    editarFestasPage,
+    atualizarFesta
+}

@@ -14,8 +14,7 @@
         <%
         if(todasFestas.length != 0){ %><!--caso exista algo na tabela de festas, as exibe-->
             <% todasFestas.forEach(festa=>{ %>
-                <form action="/editarFesta" method="post">
-                    <input type="text" name="festaId" value="<%- festa.id%>">
+                <form action="/festas/editarFestaPage" method="get">
                     <dt> Contratante: <%- festa.idUsuario %> </dt>
                     <dd>aniversariante: <%- festa.aniversariante %></dd>
                     <dd> Data: <%- festa.data %></dd>
@@ -23,6 +22,15 @@
                     <dd> Salão: <%- festa.local %></dd>
                     <dd> Convidados: <%- festa.qtdConvidados %></dd>
                     <dd> Horario: <%- festa.horario%></dd>
+
+                    <input type="hidden" name="festaId" value="<%- festa.id%>">
+
+                    <input type="hidden" name="qtdConvidados" value="<%- festa.qtdConvidados %>">
+
+                    <input type="hidden" name="data" value="<%- festa.data %>">
+
+                    <input type="hidden" name="horario" value="<%- festa.horario %>">
+
                     <button type="submit">Editar</button>
                 </form>
             <% }) %> <% }else{ %><!--se não houver festas agendadas, exibe a mensagem-->

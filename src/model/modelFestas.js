@@ -23,7 +23,11 @@ const festas = sequelize.define('Festa', {
     },
     idUsuario:{
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+            model: 'usuarios',
+            key: 'idUsuario'
+        }
     },
     local: {
         type: Sequelize.STRING,

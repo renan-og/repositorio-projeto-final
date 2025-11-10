@@ -18,10 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 //configurando o uso de sessões
 app.use(session(
     {
-        secret: 'chave-secreta-da-sessap',
+        secret: 'chave-ultra-secreta-da-sessao',
         resave: false,
         saveUninitialized: true,
-        cookie: { maxAge: 60000} //duração da sessão 1 minuto
+        cookie: { 
+            maxAge: 60000 
+        } //duração da sessão 1 minuto
     }
     )
 )

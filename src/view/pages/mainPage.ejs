@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Bem vindo</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
     <script src='main.js'></script>
 </head>
 <body>
@@ -21,12 +21,19 @@
         <h2 id="subtitle">PLANNING THE FUTURE OF YOUR HAPPINESS</h2>
     </div>
 
-    <form action="/login" method="post">
+    <form action="/usuarios/login" method="post">
         <h3 id="logintitle">Login</h3><br>
         <input type="text" name="usuario" placeholder="Usuario"><br>
         <input type="password" name="senha" placeholder="Senha"><br>
         <button type="submit" id="enterbutton">Entrar</button>
+        
     </form>
+    <% 
+        if(erroSenha)
+        {%>
+            <p><%= erroSenha %></p>
+        <%}
+    %>
     <footer>
         
     </footer>

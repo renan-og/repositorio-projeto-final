@@ -1,6 +1,6 @@
 const path = require('path');
 const mainPage = (req, res)=>{
-    res.render("pages/mainPage");
+    res.render("pages/mainPage", {erroSenha: null});
 };
 const login = (req, res)=>{
     

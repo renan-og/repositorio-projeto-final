@@ -8,6 +8,18 @@ const festas = async ( req, res ) => {
         res.status(500).render('ADM/todasAsFestas', { erro });
     };
 };
+const festasUsuarioSessao = async ( req, res ) => {//para que o usuario logado possa ver suas festas contratadas
+    try {
+        const festasContratadas = await festasModel.findAll(
+            {
+                where: {idUsuario: req.session.usuario.idUsuario}
+            }
+        );
+        res.status(200).render('usuario/festasContratadas', { festasContratadas, nome: req.session.usuario.nome }); //enviar todas as festas a página
+    } catch (erro) {
+        res.status(500).render('usuario/festasContratadas', { erro, festasContratadas: [] });
+    };
+};
 
 const criarFesta = async (req, res) => {
     try {
@@ -15,7 +27,7 @@ const criarFesta = async (req, res) => {
         const horario = req.body.horario;
         const tema = req.body.tema;
         const local = req.body.local;
-        const idUsuario = req.body.idUsuario;
+        const idUsuario = parseInt(req.session.usuario.idUsuario);
         const qtdConvidados = req.body.qtdConvidados;
         const aniversariante = req.body.aniversariante;
 
@@ -85,6 +97,7 @@ const atualizarFesta = async (req, res) => {
 
 module.exports = {
     festas,
+    festasUsuarioSessao,
     criarFesta,
     editarFestasPage,
     atualizarFesta

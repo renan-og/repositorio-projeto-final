@@ -9,20 +9,21 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <%include('../partials/header') %>
-    <form action="">
-        <h3>Para funcionarios</h3>
-        <input type="text" name="email" placeholder="Email">
-        <input type="text" name="usuario" placeholder="Usuario">
-        <input type="password" name="senha" placeholder="Senha">
-        <button type="submit">Entrar</button>
+    <form action="/usuarios/cadastroFuncionario" method="post">
+        <h3>Para funcionarios</h3><br>
+        <input type="text" name="email" placeholder="Email"><br>
+        <input type="text" name="usuario" placeholder="Usuario"><br>
+        <input type="text" name="CPF" placeholder="CPF"><br>
+        <input type="password" name="senha" placeholder="Senha"><br>
+        <button type="submit">Cadastrar-se</button>
     </form>
-    <form action="">
-        <h3>Para colaboradores</h3>
-        <input type="text" name="email" placeholder="Email">
-        <input type="text" name="usuario" placeholder="Usuario">
-        <input type="password" name="senha" placeholder="Senha">
-        <button type="submit">Entrar</button>
+    <form action="/usuarios/cadastroContratante" method="post">
+        <h3>Para colaboradores</h3><br>
+        <input type="text" name="email" placeholder="Email"><br>
+        <input type="text" name="usuario" placeholder="Usuario"><br>
+        <input type="text" name="CPF" placeholder="CPF"><br>
+        <input type="password" name="senha" placeholder="Senha"><br>
+        <button type="submit">Cadastrar-se</button>
     </form>
 </body>
 </html>

@@ -3,22 +3,39 @@
     padding: 0;
 }
 
-
 header{
     width: 100%;
     height: 75px;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     flex-direction: row;
     gap: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     align-items: center;
     background-color: white;
 }
+#socials{
+    display: flex;
+    justify-content: center;
+    width: 17%;
+    align-items: center;
+
+}
+
+#socials img{
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+}
 
 #navbar{
-    width: 15%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 20%;
 }
+
 #background{
     background-image: url('./Imagens/background.jpg');
     background-repeat: no-repeat;
@@ -26,6 +43,12 @@ header{
     position: static;
     height: 100vh;
     z-index: -1;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
 }
 
 #middle{

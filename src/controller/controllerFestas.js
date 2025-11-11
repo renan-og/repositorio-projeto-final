@@ -41,7 +41,7 @@ const criarFesta = async (req, res) => {
             aniversariante: aniversariante
         });
         console.log("funcionou")
-        res.status(201).redirect('/festas/')
+        res.status(201).redirect('/festas/festasContratadas')
 
     } catch (error) {
         console.error(error)
@@ -95,10 +95,29 @@ const atualizarFesta = async (req, res) => {
     }
 }
 
+const excluirFesta = async (req, res) => 
+    {
+        try
+        {
+            const idFesta = parseInt(req.body.idFesta);
+            const festaExcluida = await festas.destroy({
+                where:
+                {
+                    id: idFesta
+                }
+            })
+            console.log("Festa excluída com sucesso!!")
+        } catch(error)
+        {
+            console.log("Erro ao excluir festa: "+error)
+        }
+    } 
+
 module.exports = {
     festas,
     festasUsuarioSessao,
     criarFesta,
     editarFestasPage,
-    atualizarFesta
+    atualizarFesta,
+    excluirFesta
 }

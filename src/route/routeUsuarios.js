@@ -10,6 +10,8 @@ router.post('/cadastroFuncionario', controllerUsuarios.cadastroFuncionario);
 
 router.post('/login', controllerUsuarios.loginUsuario);
 
+router.post('/logout', controllerUsuarios.logoutUsuario)
+
 router.get('/novaFestaPagina', (req, res)=>{//renderizar a pagina de criação
     res.render('usuario/criarFesta', { nome : req.session.usuario.nome});
 });

@@ -1,4 +1,5 @@
 const usuarios = require('../model/modelUsuarios');
+const bcrypt = require('bcrypt');
 
 const listarFuncionarios = async (req, res) => {
     try {
@@ -17,11 +18,13 @@ const cadastroContratante = async (req, res) =>
         const email = req.body.email;
         const senha = req.body.senha;
 
+        const senhaHash = await bcrypt.hash(senha, 10);//codificação da senha no cadastro
+
         const novoContratante = await usuarios.create({
             nome: nome,
             CPF: CPF,
             email: email,
-            senha: senha,
+            senha: senhaHash,
             tipo: 'contratante'
         })
         res.redirect('/');
@@ -69,16 +72,17 @@ const loginUsuario = async (req, res) =>
             {
                 res.status(404).render('pages/cadastroPage')//se o usuario ainda não for cadastrado/findOne não encontrar uma linha correspondente, ele é redirecionado para a pagina de cadastro   
             };
+        const verificacaoSenha = await bcrypt.compare(senha, usuarioExistente.senha);
         //caso ja seja cadastrado, ele vai para a verificação da senha
-        if(usuarioExistente.senha !== senha)
+        if(!verificacaoSenha)//se a senha digitada não for igual a senha armazenada no banco de dados
             {
-             res.status(401).render('pages/mainPage', {erroSenha: "Senha incorreta"}); 
+             res.status(401).render('pages/mainPage', {erroSenha: "Senha incorreta"}); //envia o aviso de senha incorreta
              return;  
             }
         //Em caso de login bem sucedido, o usuario é redirecionado diretamente para a página de contrato de festas
         req.session.usuario = 
         {
-            id: usuarioExistente.idUsuario,
+            idUsuario: usuarioExistente.idUsuario,
             nome: usuarioExistente.nome,
             email: usuarioExistente.email,
             tipo: usuarioExistente.tipo
@@ -89,10 +93,26 @@ const loginUsuario = async (req, res) =>
             console.log('Ocorreu um erro inesperado: ' + error)
         }
 };
+//realizar logaut
+const logoutUsuario = (req, res) =>
+{
+    req.session.destroy((error) =>
+    {
+        if(error)
+        {
+            console.log('erro ao realizar logout: '+error)
+        }else
+        {
+            res.clearCookie('sessaoUsuario');
+            res.redirect('/');
+        }
+    })   
+}
 
 module.exports = {
     listarFuncionarios,
     cadastroContratante,
     cadastroFuncionario,
-    loginUsuario
+    loginUsuario,
+    logoutUsuario
 }

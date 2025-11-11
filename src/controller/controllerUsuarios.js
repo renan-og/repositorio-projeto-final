@@ -107,6 +107,19 @@ const logoutUsuario = (req, res) =>
             res.redirect('/');
         }
     })   
+};
+
+//excluir um usuario (função do ADM)
+
+const excluirUsuario = async (req, res) =>
+{
+    try
+    {
+        const usuarioId = req.body.usuarioId;
+    } catch(error)
+    {
+        console.error('Erro ao excluir usuario: '+error);
+    }
 }
 
 module.exports = {

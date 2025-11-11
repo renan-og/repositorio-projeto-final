@@ -2,21 +2,30 @@
     margin: 0;
     padding: 0;
 }
-body{
-    background-image: url('./Imagens/Party.com.jpg');
-}
+
+
 header{
     width: 100%;
-    height: 50px;
+    height: 75px;
     display: flex;
     justify-content: right;
     flex-direction: row;
     gap: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     align-items: center;
+    background-color: white;
 }
+
 #navbar{
     width: 15%;
+}
+#background{
+    background-image: url('./Imagens/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: static;
+    height: 100vh;
+    z-index: -1;
 }
 
 #middle{
@@ -27,22 +36,17 @@ header{
     height: 100vh;
 }
 #partytitle {
-    font-size: 250px;
+    font-size: 275px;
     font-weight: 800;
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
 }
+
 #subtitle {
-    font-size: 50px;
+    font-size: 75px;
     font-weight: 600;
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
 }  
-
-#partytitle{
-    font-size: 200px;
-    font-weight: bolder;
-    font: arial;
-    color: white;
-}

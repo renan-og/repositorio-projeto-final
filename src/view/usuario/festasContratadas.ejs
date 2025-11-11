@@ -30,13 +30,14 @@
                     <input type="hidden" name="data" value="<%- festa.data %>">
 
                     <input type="hidden" name="horario" value="<%- festa.horario %>">
-
-                    <button type="submit">Editar</button>
                 </form>
             <% }) %> <% }else{ %><!--se não houver festas agendadas, exibe a mensagem-->
                 <dt>Nenhuma festa agendada</dt>
                 <% } 
         %>
     </dl>
+    <form action="/usuarios/logout" method="post">
+        <button>Sair</button>
+    </form>
 </body>
 </html>

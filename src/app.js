@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 //configurando o uso de sessões
 app.use(session(
     {
+        name: 'sessaoUsuario',
         secret: 'chave-ultra-secreta-da-sessao',
         resave: false,
         saveUninitialized: true,

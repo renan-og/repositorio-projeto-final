@@ -29,8 +29,8 @@ app.use(session(
     )
 )
 
-const rotasFestas = require('./route/routeFestas');
-app.use('/festas', rotasFestas);
+const rotasAdmin = require('./route/routeADM');
+app.use('/admin', rotasAdmin);
 
 const rotasUsuarios = require('./route/routeUsuarios');
 app.use('/usuarios', rotasUsuarios)

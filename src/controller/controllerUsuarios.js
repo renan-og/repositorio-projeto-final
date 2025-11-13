@@ -1,14 +1,6 @@
 const usuarios = require('../model/modelUsuarios');
+const festasModel = require('../model/modelFestas');
 const bcrypt = require('bcrypt');
-
-const listarFuncionarios = async (req, res) => {
-    try {
-        const todosFuncionarios = await funcionarios.findAll();
-        res.render('pages/funcionariosPage', { funcionarios: todosFuncionarios});
-    } catch (err) {
-        res.status(500).render('pages/funcionariosPage', { erro: 'Erro ao buscar usuarios'});
-    }
-};
 
 const cadastroContratante = async (req, res) =>
 {
@@ -26,8 +18,15 @@ const cadastroContratante = async (req, res) =>
             email: email,
             senha: senhaHash,
             tipo: 'contratante'
-        })
-        res.redirect('/');
+        });
+        req.session.usuario = 
+        {
+            idUsuario: novoContratante.idUsuario,
+            nome: novoContratante.nome,
+            email: novoContratante.email,
+            tipo: novoContratante.tipo
+        };
+        res.status(201).render('pages/contratanteMainPage', { nome: req.session.usuario.nome });
     } catch(error) {
             console.error(error);
             res.status(500).render('pages/cadastroPage', { error });
@@ -87,7 +86,7 @@ const loginUsuario = async (req, res) =>
             email: usuarioExistente.email,
             tipo: usuarioExistente.tipo
         };
-        res.status(200).render('usuario/criarFesta', { nome: usuarioExistente.nome });
+        res.status(201).render('pages/contratanteMainPage', { nome: req.session.usuario.nome });
     } catch (error) 
         {
             console.log('Ocorreu um erro inesperado: ' + error)
@@ -108,24 +107,70 @@ const logoutUsuario = (req, res) =>
         }
     })   
 };
+//funções dos contratantes
+const festasUsuarioSessao = async ( req, res ) => {//para que o usuario logado possa ver suas festas contratadas
+    try {
+        const festasContratadas = await festasModel.findAll(
+            {
+                where: {idUsuario: req.session.usuario.idUsuario}
+            }
+        );
+        res.status(200).render('usuario/festasContratadas', { festasContratadas, nome: req.session.usuario.nome }); //enviar todas as festas a página
+    } catch (erro) {
+        res.status(500).render('usuario/festasContratadas', { erro, festasContratadas: [] });
+    };
+};
 
-//excluir um usuario (função do ADM)
-
-const excluirUsuario = async (req, res) =>
+const paginaCriarFesta = (req, res) => 
 {
-    try
-    {
-        const usuarioId = req.body.usuarioId;
-    } catch(error)
-    {
-        console.error('Erro ao excluir usuario: '+error);
+    res.render('usuario/criarFesta', { nome : req.session.usuario.nome});
+}
+
+const criarFesta = async (req, res) => {
+    try {
+        const data = req.body.data;
+        const horario = req.body.horario;
+        const tema = req.body.tema;
+        const local = req.body.local;
+        const idUsuario = parseInt(req.session.usuario.idUsuario);
+        const qtdConvidados = req.body.qtdConvidados;
+        const aniversariante = req.body.aniversariante;
+
+        const novaFesta = await festasModel.create({
+            data: data,
+            horario: horario,
+            idUsuario: idUsuario,
+            tema: tema,
+            local: local,
+            qtdConvidados: qtdConvidados,
+            aniversariante: aniversariante
+        });
+        const festasContratadas = await festasModel.findAll(
+            {
+                where: {idUsuario: req.session.usuario.idUsuario}
+            }
+        );
+        console.log("funcionou")
+        res.status(201).render('usuario/festasContratadas', { nome: req.session.usuario.nome, festasContratadas });
+
+    } catch (error) {
+        console.error(error)
+        res.status(500).render(`usuario/criarFesta`, { error });
     }
+}
+//excluir um usuario (função do ADM)
+const paginaCadastro = (req, res) =>
+{
+    res.render('pages/cadastroPage')
 }
 
 module.exports = {
-    listarFuncionarios,
     cadastroContratante,
     cadastroFuncionario,
     loginUsuario,
-    logoutUsuario
+    logoutUsuario,
+    festasUsuarioSessao,
+    criarFesta,
+    paginaCriarFesta,
+    paginaCadastro
 }

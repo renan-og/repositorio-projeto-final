@@ -32,28 +32,6 @@ const cadastroContratante = async (req, res) =>
             res.status(500).render('pages/cadastroPage', { error });
         }
 };
-const cadastroFuncionario = async (req, res) =>
-{
-    try {
-        const nome = req.body.usuario;
-        const CPF = req.body.CPF;
-        const email = req.body.email;
-        const senha = req.body.senha;
-
-        const novoUsuario = await usuarios.create({
-            nome: nome,
-            CPF: CPF,
-            email: email,
-            senha: senha,
-            tipo: 'funcionario'
-        });
-        res.redirect('/');
-
-    } catch(error) {
-            console.error(error);
-            res.status(500).render('pages/cadastroPage', { error });
-        }
-};
 //validação do login
 const loginUsuario = async (req, res) => 
 {
@@ -158,15 +136,15 @@ const criarFesta = async (req, res) => {
         res.status(500).render(`usuario/criarFesta`, { error });
     }
 }
-//excluir um usuario (função do ADM)
 const paginaCadastro = (req, res) =>
 {
     res.render('pages/cadastroPage')
 }
+//funções exclusivas de funcionarios 
+
 
 module.exports = {
     cadastroContratante,
-    cadastroFuncionario,
     loginUsuario,
     logoutUsuario,
     festasUsuarioSessao,

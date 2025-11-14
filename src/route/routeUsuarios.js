@@ -5,8 +5,6 @@ const controllerUsuarios = require('../controller/controllerUsuarios');
 
 router.post('/cadastroContratante', controllerUsuarios.cadastroContratante);
 
-router.post('/cadastroFuncionario', controllerUsuarios.cadastroFuncionario);
-
 router.post('/login', controllerUsuarios.loginUsuario);
 
 router.post('/logout', controllerUsuarios.logoutUsuario)

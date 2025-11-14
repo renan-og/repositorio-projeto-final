@@ -2,8 +2,8 @@ const Sequelize = require('sequelize');
 const sequelize = require('../config/bd');
 
 
-const festas = sequelize.define('Festa', {
-    id:{
+const festas = sequelize.define('festa', {
+    idFesta:{
         type: Sequelize.INTEGER,
         primaryKey: true,
         allowNull: false,
@@ -27,6 +27,14 @@ const festas = sequelize.define('Festa', {
         references: {
             model: 'usuarios',
             key: 'idUsuario'
+        }
+    },
+    idFuncionario: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: {
+            model: 'funcionarios',
+            key: 'idFuncionario'
         }
     },
     local: {

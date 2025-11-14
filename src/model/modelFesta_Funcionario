@@ -1,0 +1,26 @@
+const Sequelize = require('sequelize');
+const sequelize = require('../config/bd');
+
+const festa_funcionario = sequelize.define('festa_funcionario', {
+    idFesta: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'festa',
+            key: 'idFesta'
+        }
+    },
+    idFuncionario: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'usuarios',
+            key: 'idFuncionario'
+        }
+    }
+}, {
+    tableName: 'festa_funcionario',
+    timestamps: false
+});
+
+module.exports = festa_funcionario;

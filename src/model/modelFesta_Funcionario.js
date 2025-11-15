@@ -2,6 +2,12 @@ const Sequelize = require('sequelize');
 const sequelize = require('../config/bd');
 
 const festa_funcionario = sequelize.define('festa_funcionario', {
+    idJuncao:{
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
     idFesta: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -14,7 +20,7 @@ const festa_funcionario = sequelize.define('festa_funcionario', {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-            model: 'usuarios',
+            model: 'funcionarios',
             key: 'idFuncionario'
         }
     }

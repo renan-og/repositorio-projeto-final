@@ -13,7 +13,7 @@ festas.belongsToMany(funcionarios, {
     otherKey: 'idFuncionario'
 });
 
-funcionarios.belongsToMany(festa, { 
+funcionarios.belongsToMany(festas, { 
     through: festa_funcionario,
     foreignKey: 'idFuncionario',
     otherKey: 'idFesta'

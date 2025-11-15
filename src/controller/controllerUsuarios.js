@@ -1,6 +1,7 @@
 const usuarios = require('../model/modelUsuarios');
 const festasModel = require('../model/modelFestas');
 const bcrypt = require('bcrypt');
+const { where } = require('sequelize');
 
 const cadastroContratante = async (req, res) =>
 {
@@ -17,16 +18,14 @@ const cadastroContratante = async (req, res) =>
             CPF: CPF,
             email: email,
             senha: senhaHash,
-            tipo: 'contratante'
         });
         req.session.usuario = 
         {
             idUsuario: novoContratante.idUsuario,
             nome: novoContratante.nome,
             email: novoContratante.email,
-            tipo: novoContratante.tipo
         };
-        res.status(201).render('pages/contratanteMainPage', { nome: req.session.usuario.nome });
+        res.status(201).render('pages/mainPageADM', { nome: req.session.usuario.nome });
     } catch(error) {
             console.error(error);
             res.status(500).render('pages/cadastroPage', { error });
@@ -40,13 +39,14 @@ const loginUsuario = async (req, res) =>
         const nome = req.body.usuario;
         const senha = req.body.senha;
         //finOne procura uma linha onde o valor de nome seja igual ao valor da requisição do usuario no login
-        const usuarioExistente = await usuarios.findOne(
-            {
-                where: {nome: nome}
+        const usuarioExistente = await usuarios.findOne({
+            where:{
+                nome: nome
             }
-        );
+        });
         if (!usuarioExistente)
             {
+                console.log('usuario n cadastrado')
                 res.status(404).render('pages/cadastroPage')//se o usuario ainda não for cadastrado/findOne não encontrar uma linha correspondente, ele é redirecionado para a pagina de cadastro   
             };
         const verificacaoSenha = await bcrypt.compare(senha, usuarioExistente.senha);
@@ -57,14 +57,16 @@ const loginUsuario = async (req, res) =>
              return;  
             }
         //Em caso de login bem sucedido, o usuario é redirecionado diretamente para a página de contrato de festas
+        //contratante
         req.session.usuario = 
         {
             idUsuario: usuarioExistente.idUsuario,
             nome: usuarioExistente.nome,
             email: usuarioExistente.email,
-            tipo: usuarioExistente.tipo
         };
         res.status(201).render('pages/contratanteMainPage', { nome: req.session.usuario.nome });
+    
+
     } catch (error) 
         {
             console.log('Ocorreu um erro inesperado: ' + error)

@@ -1,7 +1,47 @@
 const usuarios = require('../model/modelUsuarios');
 const funcionarios = require('../model/modelFuncionarios');
+const admins = require('../model/modelAdmin')
 const festa_funcionario = require('../model/modelFesta_Funcionario');
 const festasModel = require('../model/modelFestas');
+const { where } = require('sequelize');
+
+const loginAdmin = async (req, res) => 
+{
+    try
+    {
+        const nome = req.body.usuario;
+        const senha = req.body.senha;
+        //finOne procura uma linha onde o valor de nome seja igual ao valor da requisição do usuario no login
+        const adminExistente = await admins.findOne(
+            {
+                where: {nome: nome}
+            }
+        );
+        if (!adminExistente)
+            {
+                res.status(404).render('pages/cadastroPage')//se o usuario ainda não for cadastrado/findOne não encontrar uma linha correspondente, ele é redirecionado para a pagina de cadastro   
+            };
+        const verificacaoSenha = await bcrypt.compare(senha, adminExistente.senha);
+        //caso ja seja cadastrado, ele vai para a verificação da senha
+        if(!verificacaoSenha)//se a senha digitada não for igual a senha armazenada no banco de dados
+            {
+             res.status(401).render('pages/mainPage', {erroSenha: "Senha incorreta"}); //envia o aviso de senha incorreta
+             return;  
+            }
+        //Em caso de login bem sucedido, o usuario é redirecionado diretamente para a página de contrato de festas
+        req.session.usuario = 
+        {
+            idUsuario: adminExistente.idUsuario,
+            nome: adminExistente.nome,
+            email: adminExistente.email,
+            tipo: adminExistente.tipo
+        };
+        res.status(201).render('pages/contratanteMainPage', { nome: req.session.usuario.nome });
+    } catch (error) 
+        {
+            console.log('Ocorreu um erro inesperado: ' + error)
+        }
+};
 
 const listarFuncionarios = async (req, res) => {
     try {
@@ -35,18 +75,19 @@ const cadastroFuncionario = async (req, res) =>
             res.status(500).render('pages/cadastroPage', { error });
         }
 };
-//editar os funcionarios 
+//funções para editar os funcionarios 
 //adicionar funcionario a festa 
 const adicionarFuncionarioFesta = async (req, res) =>
 {
     try {
         const idFesta = req.body.idFesta;
         const idFuncionario = req.body.idFuncionario;
+        const funcionarios = await funcionarios.findAll();
         const novaAtribuicao = await festa_funcionario.create({
             idFesta: idFesta,
             idFuncionario: idFuncionario
         });
-        res.status(200).render('ADM/addFuncionarioFesta', { mensagem: "Funcionario adicionado com sucesso!"})
+        res.status(200).render('ADM/addFuncionarioFesta', { funcionarios ,mensagem: "Funcionario adicionado com sucesso!"})
     } catch(error) {
         console.log
     }
@@ -54,7 +95,10 @@ const adicionarFuncionarioFesta = async (req, res) =>
 const listarContratantes = async (req, res) => {
     try {
         const todosContratantes = await usuarios.findAll();
-        res.render('ADM/listarUsuarios', { contratantes: todosContratantes });
+        const totalFestas = await festas.sum('idUsuario', {
+            where:{idUsuario: todosContratantes.idUsuario}
+        })
+        res.render('ADM/listarUsuarios', { contratantes: todosContratantes, totalFestas });
     } catch (err) {
         res.status(500).render('ADM/listarUsuarios', { erro: 'Erro ao buscar usuarios' });
     }
@@ -168,5 +212,6 @@ module.exports =
     atualizarFesta,
     excluirFesta,
     festasContratante,
-    excluirUsuario
+    excluirUsuario,
+    adicionarFuncionarioFesta
 };

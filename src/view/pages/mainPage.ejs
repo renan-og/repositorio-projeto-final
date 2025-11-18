@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Bem vindo</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
-    <script src='main.js'></script>
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/style.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
     <header>
-        <div id="socials">
-            <a href="https://www.instagram.com/"><img src="Imagens/instagram.png" alt=""></a>
-            <a href="https://www.tiktok.com/login"><img src="Imagens/tik-tok.png" alt=""></a>
-            <a href="https://www.facebook.com/?locale=pt_BR"><img src="Imagens/facebook-app-symbol.png" alt=""></a>
-            <a href="https://www.instagram.com/"><img src="Imagens/twitter.png" alt=""></a>
-            <span>@party.com</span>
-        </div>
-        <div id="navbar">
-            <a href="">Início</a>
-            <a href="">Sobre</a>
-            <a href="">Login</a>
-            <a href="/usuarios/cadastrar">Cadastrar-se</a>
-        </div>
+      <div id="socials">
+        <a href="https://www.instagram.com/"
+          ><img src="Imagens/instagram.png" alt=""
+        /></a>
+        <a href="https://www.tiktok.com/login"
+          ><img src="Imagens/tik-tok.png" alt=""
+        /></a>
+        <a href="https://www.facebook.com/?locale=pt_BR"
+          ><img src="Imagens/facebook-app-symbol.png" alt=""
+        /></a>
+        <a
+          href="https://www.google.com/url?q=https://x.com/%3Flang%3Dpt&sa=U&ved=2ahUKEwjFypGC9fuQAxVZK7kGHfPoHiQQFnoECBgQAQ&usg=AOvVaw0bQZUf8gap89cZ_MMxF82-"
+          ><img src="Imagens/twitter.png" alt=""
+        /></a>
+        <span>@party.com</span>
+      </div>
+      <navbar>
+        <a href="">Início</a>
+        <a href="">Sobre</a>
+        <a href="">Login</a>
+        <a href="/usuarios/cadastrar">Cadastrar-se</a>
+        <label id="changeTheme" class="switch">
+          <input type="checkbox" />
+          <span class="sliderround"></span>
+        </label>
+    </navbar>
     </header>
 
     <div id="background">
-        <div id="middle">
-            <h1 id="partytitle">PARTY.COM</h1>
-            <h2 id="subtitle">PLANNING THE FUTURE OF YOUR HAPPINESS</h2>
-        </div>
+      <div id="middle">
+        <h1 id="partytitle">PARTY.COM</h1>
+        <h2 id="subtitle">PLANNING THE FUTURE OF YOUR HAPPINESS</h2>
+      </div>
     </div>
 
     <section id="container">
-        <h3>Organize cada detalhe da sua festa de forma simples e profissional!</h3>
-        <p>Centralize informações, tarefas e equipes em um só lugar.
-            Com PARTY.COM, sua empresa economiza tempo, evita erros e garante eventos impecáveis, do planejamento à execução.</p>
-        <form id="login" action="/usuarios/login" method="post">
-            <h3 id="logintitle">Login</h3><br>
-            <input type="text" name="usuario" placeholder="Usuário:"><br>
-            <input type="password" name="senha" placeholder="Senha:"><br>
-            <button type="submit" id="enterbutton">Entrar</button>
-        </form>
-        <%
-            if(erroSenha)
-            {%>
-                <p>Ops, tivemos um erro com a senha, escreva de novo: </p>
-            <%}
-        %>
+      <h3>
+        Organize cada detalhe da sua festa de forma simples e profissional!
+      </h3>
+      <p>
+        Centralize informações, tarefas e equipes em um só lugar. Com PARTY.COM,
+        sua empresa economiza tempo, evita erros e garante eventos impecáveis,
+        do planejamento à execução.
+      </p>
+      <form id="login" action="/usuarios/login" method="post">
+        <h3 id="logintitle">Login</h3>
+        <br />
+        <input type="text" name="usuario" placeholder="Usuário:" /><br />
+        <input type="password" name="senha" placeholder="Senha:" /><br />
+        <button type="submit" id="enterbutton">Entrar</button>
+      </form>
+      <% if(erroSenha) {%>
+      <p>Ops, tivemos um erro com a senha, escreva de novo:</p>
+      <%} %>
     </section>
-    <footer>
-        
-    </footer>
-</body>
+    <footer></footer>
+  </body>
 </html>

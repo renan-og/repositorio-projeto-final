@@ -11,14 +11,13 @@
 <body>
     <h1>Contratantes:</h1><br>
     <% 
-        if(contratantes){%>
-            contratantes.forEach(contratante => {%>
+        if(todosContratantes){%>
+            <% todosContratantes.forEach(contratante => {%>
                 <form action="">
                     <dt>Nome: <%= contratante.nome %></dt>
-                    <dd>Email:<%= contratante.email %></dd>
-                    <dd>Total de festas: <%= tatalFestas %></dd>
+                    <dd>Email: <%= contratante.email %></dd>
                 </form>
-            <%})
+            <%})%>
         <%}
     %>
 </body>

@@ -13,6 +13,11 @@ const funcionarios = sequelize.define('funcionarios',
             type: DataTypes.STRING,
             allowNull: false
         },
+        userName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
         CPF: {
             type: DataTypes.INTEGER,
             allowNull: false,

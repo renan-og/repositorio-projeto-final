@@ -46,7 +46,7 @@ const loginAdmin = async (req, res) =>
 const listarFuncionarios = async (req, res) => {
     try {
         const todosFuncionarios = await funcionarios.findAll();
-        res.render('ADM/listarUsuarios', { funcionarios: todosFuncionarios });
+        return res.status(201).render('ADM/listarUsuarios', { funcionarios: todosFuncionarios });
     } catch (err) {
         res.status(500).render('ADM/listarUsuarios', { erro: 'Erro ao buscar usuarios' });
     }
@@ -95,10 +95,8 @@ const adicionarFuncionarioFesta = async (req, res) =>
 const listarContratantes = async (req, res) => {
     try {
         const todosContratantes = await usuarios.findAll();
-        const totalFestas = await festas.sum('idUsuario', {
-            where:{idUsuario: todosContratantes.idUsuario}
-        })
-        res.render('ADM/listarUsuarios', { contratantes: todosContratantes, totalFestas });
+
+        res.status(201).render('ADM/listarUsuarios', { todosContratantes });
     } catch (err) {
         res.status(500).render('ADM/listarUsuarios', { erro: 'Erro ao buscar usuarios' });
     }

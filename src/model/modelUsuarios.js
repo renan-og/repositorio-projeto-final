@@ -12,6 +12,11 @@ const usuarios = sequelize.define('usuarios', {//criação do modedlo da tabela 
         type: DataTypes.STRING,
         allowNull: false
     },
+    userName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
     CPF: {
         type: DataTypes.STRING,
         allowNull: false,

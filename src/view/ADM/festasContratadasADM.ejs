@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <h1>Festas Contratadas</h1>
+    <dl>
+        <%
+        if(festasContratadas.length != 0){ %><!--caso exista algo na tabela de festas, as exibe-->
+            <% festasContratadas.forEach(festa=>{ %>
+                <dd> aniversariante: <%= festa.aniversariante %></dd>
+                <dd> Data: <%= festa.data %></dd>
+                <dd> Tema: <%= festa.tema %></dd>
+                <dd> Salão: <%= festa.local %></dd>
+                <dd> Convidados: <%= festa.qtdConvidados %></dd>
+                <dd> Horario: <%= festa.horario%></dd>
+            <% }) %> <% }else{ %><!--se não houver festas agendadas, exibe a mensagem-->
+                <dt>Nenhuma festa agendada</dt>
+                <% } 
+        %>
+    </dl>
+</body>
+</html>

@@ -19,7 +19,7 @@ const funcionarios = sequelize.define('funcionarios',
             unique: true
         },
         CPF: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true
         },

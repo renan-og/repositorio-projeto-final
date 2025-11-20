@@ -13,9 +13,10 @@
     <% 
         if(todosContratantes){%>
             <% todosContratantes.forEach(contratante => {%>
-                <form action="">
+                <form action="/admin/getFestasContratante">
                     <dt>Nome: <%= contratante.nome %></dt>
                     <dd>Email: <%= contratante.email %></dd>
+                    <button>Ver Festas</button>
                 </form>
             <%})%>
         <%}

@@ -1,95 +1,106 @@
 const usuarios = require('../model/modelUsuarios');
 const funcionarios = require('../model/modelFuncionarios');
-const admins = require('../model/modelAdmin')
 const festa_funcionario = require('../model/modelFesta_Funcionario');
 const festasModel = require('../model/modelFestas');
-const { where } = require('sequelize');
-
-const loginAdmin = async (req, res) => 
-{
-    try
-    {
-        const nome = req.body.usuario;
-        const senha = req.body.senha;
-        //finOne procura uma linha onde o valor de nome seja igual ao valor da requisição do usuario no login
-        const adminExistente = await admins.findOne(
-            {
-                where: {nome: nome}
-            }
-        );
-        if (!adminExistente)
-            {
-                res.status(404).render('pages/cadastroPage')//se o usuario ainda não for cadastrado/findOne não encontrar uma linha correspondente, ele é redirecionado para a pagina de cadastro   
-            };
-        const verificacaoSenha = await bcrypt.compare(senha, adminExistente.senha);
-        //caso ja seja cadastrado, ele vai para a verificação da senha
-        if(!verificacaoSenha)//se a senha digitada não for igual a senha armazenada no banco de dados
-            {
-             res.status(401).render('pages/mainPage', {erroSenha: "Senha incorreta"}); //envia o aviso de senha incorreta
-             return;  
-            }
-        //Em caso de login bem sucedido, o usuario é redirecionado diretamente para a página de contrato de festas
-        req.session.usuario = 
-        {
-            idUsuario: adminExistente.idUsuario,
-            nome: adminExistente.nome,
-            email: adminExistente.email,
-            tipo: adminExistente.tipo
-        };
-        res.status(201).render('pages/contratanteMainPage', { nome: req.session.usuario.nome });
-    } catch (error) 
-        {
-            console.log('Ocorreu um erro inesperado: ' + error)
-        }
-};
+const bcrypt = require('bcrypt');
+const { where, INTEGER } = require('sequelize');
 
 const listarFuncionarios = async (req, res) => {
     try {
         const todosFuncionarios = await funcionarios.findAll();
-        return res.status(201).render('ADM/listarUsuarios', { funcionarios: todosFuncionarios });
+
+        res.status(201).render('ADM/listarFuncionarios', { todosFuncionarios });
     } catch (err) {
-        res.status(500).render('ADM/listarUsuarios', { erro: 'Erro ao buscar usuarios' });
+        res.status(500).render('ADM/listarFuncionarios');
     }
 };
 
 const cadastroFuncionario = async (req, res) =>
 {
     try {
-        const nome = req.body.usuario;
+        const nome = req.body.nome;
         const CPF = req.body.CPF;
         const email = req.body.email;
-        const senha = req.body.senha;
         const funcao = req.body.funcao;
+        var numeroFuncao = 0; 
+        switch(funcao)
+        {
+            case "Chefe de cozinha":
+                numero = 0;
+            case "Ajudante de Cozinha":
+                numero = 1;
+            case "Garçom":
+                numero = 2;
+            case "Barman/Barwoman":
+                numero = 3;
+            case "Recepcionista":
+                numero = 4;
+            case "Segurança":
+                numero = 5;
+            case "Monitor":
+                numero = 6;
+            case "Recrador":
+                numero = 7;
+            case "Gerente de Eventos":
+                numero = 8;
+            case "Cerimonialista":
+                numero = 9;
+            case "Equipe de Limpeza":
+                numero = 10;
+        };
+        const userName = String(nome+"_"+numeroFuncao);
+        const senha = await bcrypt.hash(String(funcao + "123"), 10);
 
         const novoFuncionario = await funcionarios.create({
             nome: nome,
+            userName: userName,
             CPF: CPF,
             email: email,
             senha: senha,
             funcao: funcao
         });
-        res.redirect('/');
+        res.render('pages/mainPageADM', { nome: req.session.usuario.nome });
 
     } catch(error) {
             console.error(error);
-            res.status(500).render('pages/cadastroPage', { error });
+            res.status(500).render('ADM/contratarFuncionario', { error });
         }
 };
+
+const paginaContratarFuncionario = (req, res) => {
+    res.render('ADM/contratarFuncionario');
+}
 //funções para editar os funcionarios 
 //adicionar funcionario a festa 
+
+const adicionarFuncionarioFestaPagina = async (req, res) => 
+{
+    try 
+    {   
+        const todasAsFestas = await festasModel.findAll();
+        const todosFuncionarios = await funcionarios.findAll();
+        res.render('ADM/addFuncionarioFesta', { todosFuncionarios, todasAsFestas });
+    } catch (error) {
+        console.error(error);
+        res.status(500).render('ADM/addFuncionarioFesta', { error });
+    }  
+};
+
 const adicionarFuncionarioFesta = async (req, res) =>
 {
     try {
-        const idFesta = req.body.idFesta;
-        const idFuncionario = req.body.idFuncionario;
-        const funcionarios = await funcionarios.findAll();
+        const todosFuncionarios = await funcionarios.findAll();
+        const todasAsFestas = await festasModel.findAll();
+        const idFesta = parseInt(req.body.idFesta);
+        const idFuncionario = parseInt(req.body.idFuncionario);
         const novaAtribuicao = await festa_funcionario.create({
             idFesta: idFesta,
             idFuncionario: idFuncionario
         });
-        res.status(200).render('ADM/addFuncionarioFesta', { funcionarios ,mensagem: "Funcionario adicionado com sucesso!"})
+        res.status(200).render('ADM/addFuncionarioFesta', { todosFuncionarios , todasAsFestas})
     } catch(error) {
-        console.log
+        console.log("erro: "+ error);
+        res.render('pages/mainPageADM', { nome: req.session.usuario.nome })
     }
 }
 const listarContratantes = async (req, res) => {
@@ -202,6 +213,8 @@ const excluirFesta = async (req, res) => {
 
 module.exports =
 {
+    adicionarFuncionarioFestaPagina,
+    paginaContratarFuncionario,
     listarFuncionarios,
     listarContratantes,
     cadastroFuncionario,

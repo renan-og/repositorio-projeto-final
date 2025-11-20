@@ -9,6 +9,34 @@
     <script src='main.js'></script>
 </head>
 <body>
-    
+    <h1>Atribuir funcionários a festa</h1>
+    <% if(todasAsFestas.length != 0)
+    { %>
+             <form action="/admin/setFuncionarioFesta" method="POST">
+                 <% todasAsFestas.forEach(festa=>
+                 { %>
+                    <dd> aniversariante: <%= festa.aniversariante %></dd>
+                    <dd> Data: <%= festa.data %></dd>
+                    <dd> Tema: <%= festa.tema %></dd>
+                    <dd> Salão: <%= festa.local %></dd>
+                    <dd> Convidados: <%= festa.qtdConvidados %></dd>
+                    <dd> Horario: <%= festa.horario %></dd>
+                    <dd><input type="text" value= <%- festa.idFesta %> name="idFesta"></dd>
+                    <dd>
+                        <select name="idFuncionario">
+                            <%
+                                todosFuncionarios.forEach(funcionario =>{%>
+                                    <option value="<%= funcionario.idFuncionario %>"><%= funcionario.nome %></option>
+                                <%})
+                            %>
+                        </select>
+                    </dd>
+                             <% }) %>
+                <button>Designar funcionario</button>
+             </form> 
+    <% }else{ %>
+                <p>Nenhuma festa agendada</p>
+            <% } 
+    %>
 </body>
 </html>

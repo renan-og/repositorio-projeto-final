@@ -135,19 +135,19 @@ const todasFestas = async (req, res) => {
 
 const festasContratante = async (req, res) => {
     try {
-        const idUsuario = parseInt(req.body.idUsuario);
+        const reqIdUsuario = parseInt(req.body.idUsuario);
         const festasContratadas = await festasModel.findAll(
             {
-                where: { idUsuario: idUsuario }
+                where: { idUsuario: reqIdUsuario }
             }
         );
         res.status(200).render('ADM/festasContratadasADM', { festasContratadas }); //enviar todas as festas a página
     } catch (error) {
         console.error(error);
         res.status(500).render('ADM/festasContratadasADM', { error });
-    }
+    };
 
-}
+};
 //função apenas para carregar a pagina de edição
 const editarFestasPage = async (req, res) => {
 
@@ -170,7 +170,7 @@ const editarFestasPage = async (req, res) => {
         console.log("Deu erro", error)
         res.status(500).render('ADM/editarFestaADM', { error });
     };
-}
+};
 //função que de fato edita a festa
 const atualizarFesta = async (req, res) => {
     try {
@@ -194,7 +194,7 @@ const atualizarFesta = async (req, res) => {
         console.error(error);
         res.status(500).render('ADM/editarFestaADM', { error });
     }
-}
+};
 
 const excluirFesta = async (req, res) => {
     try {

@@ -69,9 +69,7 @@ const cadastroFuncionario = async (req, res) =>
 
 const paginaContratarFuncionario = (req, res) => {
     res.render('ADM/contratarFuncionario');
-}
-//funções para editar os funcionarios 
-//adicionar funcionario a festa 
+} 
 
 const adicionarFuncionarioFestaPagina = async (req, res) => 
 {

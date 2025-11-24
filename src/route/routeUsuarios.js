@@ -14,6 +14,9 @@ router.get('/novaFestaPagina', controllerUsuarios.paginaCriarFesta);
 router.post('/novaFesta', controllerUsuarios.criarFesta);
 
 router.get('/festasContratadas', controllerUsuarios.festasUsuarioSessao);
+
+router.post('/deletarConta', controllerUsuarios.excluirConta);
+
 router.get('/cadastrar', controllerUsuarios.paginaCadastro);
 
 module.exports = router;

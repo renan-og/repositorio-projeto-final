@@ -6,7 +6,7 @@ const { where } = require('sequelize');
 const cadastroContratante = async (req, res) =>
 {
     try {
-        const nome = req.body.usuario;
+        const nome = req.body.nome;
         const userName = req.body.userName
         const CPF = req.body.CPF;
         const email = req.body.email;
@@ -152,9 +152,27 @@ const criarFesta = async (req, res) => {
 const paginaCadastro = (req, res) =>
 {
     res.render('pages/cadastroPage')
-}
-//funções exclusivas de funcionarios 
+};
 
+const excluirConta = async (req, res) => {
+    try{
+        const usuario = await usuarios.findOne({
+            where:{idUsuario: req.session.usuario.idUsuario}
+        });
+        await usuario.destroy();
+        res.redirect('/');
+    } catch(error){
+        console.error("Erro inesperado: ");
+    };
+};
+
+const editarInfos = async (req, res) => {
+    try{
+
+    } catch(error){
+        
+    }
+}
 
 module.exports = {
     cadastroContratante,
@@ -163,5 +181,6 @@ module.exports = {
     festasUsuarioSessao,
     criarFesta,
     paginaCriarFesta,
-    paginaCadastro
+    paginaCadastro,
+    excluirConta
 }

@@ -141,10 +141,11 @@ const festasContratante = async (req, res) => {
                 where: { idUsuario: reqIdUsuario }
             }
         );
-        res.status(200).render('ADM/festasContratadasADM', { festasContratadas }); //enviar todas as festas a página
+        console.log("ID USUARIO: " + reqIdUsuario);
+        res.status(200).render('ADM/festasContratante', { festasContratadas }); //enviar todas as festas a página
     } catch (error) {
-        console.error(error);
-        res.status(500).render('ADM/festasContratadasADM', { error });
+        console.error("ERRO INESPERADO",error);
+        res.status(500).render('ADM/festasContratante', { error, festasContratadas: []});
     };
 
 };

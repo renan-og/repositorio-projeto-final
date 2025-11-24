@@ -5,37 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Bem vindo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/col.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/style.css" />
     <script src="main.js"></script>
   </head>
   <body>
-    <header>
+    <header class="col-12">
       <div id="socials">
-        <a href="https://www.instagram.com/"
-          ><img src="Imagens/instagram.png" alt=""
-        /></a>
-        <a href="https://www.tiktok.com/login"
-          ><img src="Imagens/tik-tok.png" alt=""
-        /></a>
-        <a href="https://www.facebook.com/?locale=pt_BR"
-          ><img src="Imagens/facebook-app-symbol.png" alt=""
-        /></a>
-        <a
-          href="https://www.google.com/url?q=https://x.com/%3Flang%3Dpt&sa=U&ved=2ahUKEwjFypGC9fuQAxVZK7kGHfPoHiQQFnoECBgQAQ&usg=AOvVaw0bQZUf8gap89cZ_MMxF82-"
-          ><img src="Imagens/twitter.png" alt=""
-        /></a>
+        <a href="https://www.instagram.com/"><img src="Imagens/instagram.png" class="icon" alt=""/></a>
+        <a href="https://www.tiktok.com/login"><img src="Imagens/tik-tok.png" class="icon" alt=""/></a>
+        <a href="https://www.facebook.com/?locale=pt_BR"><img src="Imagens/facebook-app-symbol.png" class="icon" alt=""/></a>
+        <a href="https://x.com/?lang=pt" alt=""><img src="Imagens/twitter.png" class="icon" alt=""/></a>
         <span>@party.com</span>
       </div>
-      <navbar>
+      <nav>
         <a href="">Início</a>
         <a href="">Sobre</a>
-        <a href="">Login</a>
+        <a href="#login">Login</a>
         <a href="/usuarios/cadastrar">Cadastrar-se</a>
-        <label id="changeTheme" class="switch">
-          <input type="checkbox" />
-          <span class="sliderround"></span>
+        <label for="changeTheme">
+          🌕
         </label>
-    </navbar>
+        <input type="checkbox" id="changeTheme" class="changeTheme"/>
+      </nav>
     </header>
 
     <div id="background">

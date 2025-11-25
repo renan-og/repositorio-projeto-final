@@ -3,6 +3,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition-duration: 1s;
+}
+body{
+    display:flex;
+    flex-direction: column;
 }
 .darkMode{
     background-color: #121212;
@@ -16,6 +21,8 @@
     height: 30px;
 }
 #background{
+    display: flex;
+    justify-content: center;
     background-image: url(/Imagens/background2.jpg);
     background-size: cover;
     height: 100vh;
@@ -25,7 +32,22 @@ header{
     justify-content: space-between;
     align-items: center;
     background-color: #f8f9fa;
+    height: 50px;
 }
 #changeTheme{
     width: 20px;
+}
+#middle{
+    color: white;
+    align-self: center;
+    text-align: center;
+}
+#partytitle{
+    font-size: 275px;
+}
+#subtitle{
+    font-size: 100px;
+}
+#socials{
+    
 }

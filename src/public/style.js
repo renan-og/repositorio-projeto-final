@@ -5,24 +5,41 @@ const h2 = document.getElementsByTagName('h2');
 const h3 = document.getElementsByTagName('h3');
 const p = document.getElementsByTagName('p');
 const body = document.getElementsByTagName('body');
-const centerTitle = document.getElementById('background');
+const background = document.getElementById('background');
+const title = document.getElementById('partytitle');
+const subtitle = document.getElementById('subtitle');
+const login = document.getElementById('login');
 
 let ultimaPosicaoScroll = window.scrollY;
 
 const checkBox = document.getElementById('changeTheme');
 
     window.addEventListener('scroll', ()=>{
-        const posicaoAtualScrool = window.scrollY;
+        const posicaoAtualScroll = window.scrollY;
 
-        if (posicaoAtualScrool > ultimaPosicaoScroll){
+        const valorMinimoScroll = 300;
+
+        if (posicaoAtualScroll > valorMinimoScroll){
             console.log('Deslizou para baixo');
-            centerTitle.style.height = '100px';
-            centerTitle.style.top = '100px';
-        } else if (posicaoAtualScrool < ultimaPosicaoScroll){
+            background.style.height = '100px';
+            background.style.top = '50px';
+            background.style.position = 'fixed';
+            title.style.fontSize = '65px';
+            subtitle.style.fontSize = '15px';
+            body.style.height = '200vh';
+            login.style.position = 'fixed';
+        } else if (posicaoAtualScroll < ultimaPosicaoScroll){
             console.log('Deslizou para cima');
+            background.style.position = 'absolute'
+            background.style.height = '100vh';
+            background.style.top = '50px';
+            title.style.fontSize = '275px';
+            subtitle.style.fontSize = '100px';
+            login.style.position = 'absolute';
+
         }
 
-        ultimaPosicaoScroll = posicaoAtualScrool
+        ultimaPosicaoScroll = posicaoAtualScroll
     })
 
     checkBox.addEventListener('change', ()=>{//função para trocar o tema do site 

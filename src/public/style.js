@@ -27,8 +27,11 @@ const checkBox = document.getElementById('changeTheme');
             title.style.fontSize = '65px';
             subtitle.style.fontSize = '15px';
             body.style.height = '200vh';
+            login.style.top = '100px';
             login.style.position = 'fixed';
-        } else if (posicaoAtualScroll < ultimaPosicaoScroll){
+
+        }
+        else if (posicaoAtualScroll < ultimaPosicaoScroll){
             console.log('Deslizou para cima');
             background.style.position = 'absolute'
             background.style.height = '100vh';

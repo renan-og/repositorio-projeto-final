@@ -8,9 +8,9 @@
 body{
     display:flex;
     flex-direction: column;
+    align-items: center;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     height: 200vh;
 }
@@ -60,9 +60,6 @@ header{
     align-items: center;
     gap: 10px;
 }
-<<<<<<< HEAD
-=======
-
 #container {
   text-align: center;
   font-size: 25px;
@@ -72,4 +69,3 @@ header{
   flex-direction: column;
   height: 300px;
 }
->>>>>>> f5ae62903594298690211f73eb382fe023ca8231

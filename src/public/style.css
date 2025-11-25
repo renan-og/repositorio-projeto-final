@@ -58,3 +58,13 @@ header{
     align-items: center;
     gap: 10px;
 }
+
+#container {
+  text-align: center;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
+  height: 300px;
+}

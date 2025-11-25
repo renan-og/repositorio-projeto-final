@@ -60,3 +60,16 @@ header{
     align-items: center;
     gap: 10px;
 }
+<<<<<<< HEAD
+=======
+
+#container {
+  text-align: center;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
+  height: 300px;
+}
+>>>>>>> f5ae62903594298690211f73eb382fe023ca8231

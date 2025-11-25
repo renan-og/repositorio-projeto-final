@@ -166,11 +166,12 @@ const excluirConta = async (req, res) => {
     };
 };
 
-const editarInfosPagina = async (req, res) => {
+const paginaPerfil = async (req, res) => {
     try{
             const usuario = await usuarios.findOne({
                 where:{idUsuario: req.session.usuario.idUsuario}
             })
+            res.render('usuarios/perfilUsuario', usuario);
     }catch(error){
         console.error("Erro inesperado: ", error)
     }

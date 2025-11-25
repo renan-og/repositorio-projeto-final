@@ -3,25 +3,25 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Festas Agendadas</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
 </head>
 <body>
-    <h1>Festas para acontecer</h1>
+    <h1>Festas agendadas:</h1>
     <dl>
         <%
         if(todasFestas.length != 0){ %> <!--caso exista algo na tabela de festas, as exibe-->
             <% todasFestas.forEach(festa=>{ %>
                 <form action="/admin/paginaEditarFesta" method="get">
                     <dt> Contratante: <%- festa.idUsuario %> </dt>
-                    <dd>aniversariante: <%- festa.aniversariante %></dd>
+                    <dd> Aniversariante: <%- festa.aniversariante %></dd>
                     <dd> Data: <%- festa.data %></dd>
                     <dd> Tema: <%- festa.tema %></dd>
                     <dd> Salão: <%- festa.local %></dd>
                     <dd> Convidados: <%- festa.qtdConvidados %></dd>
-                    <dd> Horario: <%- festa.horario%></dd>
+                    <dd> Horário: <%- festa.horario%></dd>
 
                     <input type="hidden" name="festaId" value="<%- festa.idFesta%>">
 

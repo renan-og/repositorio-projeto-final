@@ -14,12 +14,12 @@
         <%
         if(festasContratadas){ %><!--caso exista algo na tabela de festas, as exibe-->
             <% festasContratadas.forEach(festa=>{ %>
-                <dd> aniversariante: <%= festa.aniversariante %></dd>
+                <dd> Aniversariante: <%= festa.aniversariante %></dd>
                 <dd> Data: <%= festa.data %></dd>
                 <dd> Tema: <%= festa.tema %></dd>
                 <dd> Salão: <%= festa.local %></dd>
                 <dd> Convidados: <%= festa.qtdConvidados %></dd>
-                <dd> Horario: <%= festa.horario%></dd>
+                <dd> Horário: <%= festa.horario%></dd>
             <% }) %> <% } else { %><!--se não houver festas agendadas, exibe a mensagem-->
                 <p>Este contratante ainda não agendou nenhuma festa</p>
                 <% } 

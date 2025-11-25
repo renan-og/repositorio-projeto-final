@@ -27,17 +27,25 @@ const checkBox = document.getElementById('changeTheme');
             title.style.fontSize = '65px';
             subtitle.style.fontSize = '15px';
             body.style.height = '200vh';
-            login.style.position = 'fixed';
-        } else if (posicaoAtualScroll < ultimaPosicaoScroll){
+            login.style.top = '100px';
+
+        }
+        else if (posicaoAtualScroll < ultimaPosicaoScroll){
             console.log('Deslizou para cima');
             background.style.position = 'absolute'
             background.style.height = '100vh';
             background.style.top = '50px';
             title.style.fontSize = '275px';
             subtitle.style.fontSize = '100px';
-            login.style.position = 'absolute';
-
-        }
+            if(window.innerWidth >= 1024){
+                background.style.position = 'absolute'
+                background.style.height = '100vh';
+                background.style.top = '50px';
+                title.style.fontSize = '200px';
+                subtitle.style.fontSize = '50px';
+                login.style.top = '150vh';
+            };
+        };
 
         ultimaPosicaoScroll = posicaoAtualScroll
     })

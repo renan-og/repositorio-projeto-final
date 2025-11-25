@@ -12,6 +12,7 @@ body{
     padding: 0;
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 200vh;
 }
 .darkMode {
   background-color: #121212;
@@ -37,6 +38,7 @@ header{
     align-items: center;
     background-color: #f8f9fa;
     height: 50px;
+    position: fixed;
 }
 #changeTheme{
     width: 20px;

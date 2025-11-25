@@ -68,3 +68,11 @@ header{
   flex-direction: column;
   height: 300px;
 }
+
+#login{
+  border-radius: 20px;
+  border-color: black;
+  background-color: #616161;
+  width: 200px;
+  align-self: center;
+}

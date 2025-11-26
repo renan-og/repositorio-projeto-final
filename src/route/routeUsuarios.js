@@ -15,6 +15,8 @@ router.post('/novaFesta', controllerUsuarios.criarFesta);
 
 router.get('/festasContratadas', controllerUsuarios.festasUsuarioSessao);
 
+router.get('/perfil', controllerUsuarios.paginaPerfil);
+
 router.post('/deletarConta', controllerUsuarios.excluirConta);
 
 router.get('/cadastrar', controllerUsuarios.paginaCadastro);

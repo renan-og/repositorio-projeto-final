@@ -10,28 +10,11 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/desktop.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/cellphone.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/tablet.css" />
-    <script src="style.js" defer></script>
+    <script src="/style.js" defer></script>
   </head>
   <body>
-    <header class="col-12">
-      <div id="socials" class="col-2">
-        <a href="https://www.instagram.com/"><img src="Imagens/instagram.png" class="icon" alt=""/></a>
-        <a href="https://www.tiktok.com/login"><img src="Imagens/tik-tok.png" class="icon" alt=""/></a>
-        <a href="https://www.facebook.com/?locale=pt_BR"><img src="Imagens/facebook-app-symbol.png" class="icon" alt=""/></a>
-        <a href="https://x.com/?lang=pt" alt=""><img src="Imagens/twitter.png" class="icon" alt=""/></a>
-        <span>@party.com</span>
-      </div>
-      <nav>
-        <a href="">Início</a>
-        <a href="">Sobre</a>
-        <a href="#login">Login</a>
-        <a href="/usuarios/cadastrar">Cadastrar-se</a>
-        <label for="changeTheme">
-          🌕
-        </label>
-        <input type="checkbox" id="changeTheme" class="changeTheme"/>
-      </nav>
-    </header>
+
+    <%- include('../partials/header.ejs') %>
 
     <div id="background" class="col-12">
       <div id="middle" class="col-12">
@@ -60,6 +43,6 @@
       <p>Ops, tivemos um erro com a senha, escreva de novo:</p>
       <%} %>
     </section>
-    <footer></footer>
+    
   </body>
 </html>

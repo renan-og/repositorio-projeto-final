@@ -171,7 +171,7 @@ const paginaPerfil = async (req, res) => {
             const usuario = await usuarios.findOne({
                 where:{idUsuario: req.session.usuario.idUsuario}
             })
-            res.render('usuarios/perfilUsuario', usuario);
+            res.status(200).render('usuario/perfilUsuario', usuario);
     }catch(error){
         console.error("Erro inesperado: ", error)
     }
@@ -193,5 +193,7 @@ module.exports = {
     criarFesta,
     paginaCriarFesta,
     paginaCadastro,
+    paginaPerfil,
+    editarInfos,
     excluirConta
 }

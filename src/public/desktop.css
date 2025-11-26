@@ -106,4 +106,8 @@
         align-self: center;
         position: absolute;
     };
+    #perfil{
+        width: 10px;
+        height: 10px;
+    }
 }

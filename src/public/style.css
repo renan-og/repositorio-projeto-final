@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     transition-duration: 1s;
+    text-decoration: none;
 }
 
 body{
@@ -36,7 +37,7 @@ body{
     justify-content: center;
     background-image: url(/Imagens/background2.jpg);
     background-size: cover;
-    height: 100vh;
+    height: 200vh;
 }
 
 header{
@@ -72,19 +73,29 @@ header{
     align-items: center;
     gap: 10px;
 }
+
 #container {
   text-align: center;
   font-size: 25px;
   display: flex;
-  justify-content: center;
-  align-self: center;
+  justify-content: space-evenly;
   flex-direction: column;
   height: 300px;
 }
+
 #login{
   border-radius: 20px;
-  border-color: black;
-  background-color: #616161;
+  background-color: #121f2e;
   align-self: center;
-  position: absolute;
-};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  flex-direction: column;
+}
+
+#loginTitle {
+  color: white;
+  font-size: 35px;
+  padding: 10px 20px;
+}

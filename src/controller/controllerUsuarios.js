@@ -171,7 +171,7 @@ const paginaPerfil = async (req, res) => {
             const usuario = await usuarios.findOne({
                 where:{idUsuario: req.session.usuario.idUsuario}
             })
-            res.status(200).render('usuario/perfilUsuario', usuario);
+            res.status(200).render('usuario/perfilUsuario', { erro:"", usuario: usuario });
     }catch(error){
         console.error("Erro inesperado: ", error)
     }
@@ -179,9 +179,22 @@ const paginaPerfil = async (req, res) => {
 
 const editarInfos = async (req, res) => {
     try{
+        const userName = req.body.userName;
+        const senhaNua = req.body.senha;
+        const novaSenhaHash = await bcrypt.hash(senhaNua, 10)
 
+        const usuarioEditado = await usuarios.update({
+            userName: userName,
+            senha: novaSenhaHash
+        }, {
+            where:{
+                idUsuario: req.session.usuario.idUsuario
+            }
+        });
+        res.status(200).render('usuarios/perfilUsuario', { mensagem: "Atualização realizada com sucesso", usuario: usuarioEditado});
     } catch(error){
-        
+        console.log("ERRO: " + error);
+        res.status(200).render('usuarios/perfilUsuario', {erro: "Ops, tivemos um erro com a edição, tente novamente mais tarde"});
     }
 }
 

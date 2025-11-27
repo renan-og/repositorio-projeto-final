@@ -21,4 +21,6 @@ router.post('/deletarConta', controllerUsuarios.excluirConta);
 
 router.get('/cadastrar', controllerUsuarios.paginaCadastro);
 
+router.post('/atualizarInformacoes', controllerUsuarios.editarInfos);
+
 module.exports = router;

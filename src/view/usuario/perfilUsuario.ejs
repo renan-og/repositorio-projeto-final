@@ -6,15 +6,21 @@
     <title>Perfil de Usuário</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/desktop.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
     <script src='/style.js' defer></script>
 </head>
 <body>
+    <header>
+        <%- include('../partials/header.ejs') %>
+    </header>
     <main>
-        <form action="" method="post">
+        <form action="/usuarios/atualizarInformacoes" method="post" class="col-3">
             <% 
                 if(usuario){%>
                     <input type="text" name="userName" placeholder="<%- usuario.userName %>">
                     <input type="password" name="senha" placeholder="<%- usuario.senha %>">
+                    <button type="submit">Salvar mudanças</button>
                 <%}
             %>
         </form>

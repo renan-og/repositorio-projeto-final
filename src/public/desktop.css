@@ -101,6 +101,7 @@
         justify-content: right;
         align-items: center;
         gap: 10px;
+        padding-left: 10px;
     }
 
     #container {

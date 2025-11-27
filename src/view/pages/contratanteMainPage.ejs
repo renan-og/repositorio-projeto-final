@@ -6,23 +6,24 @@
     <title>Bem-vindo, contratante!</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
-    <script src='main.js'></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='/desktop.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
+    <script src='/style.js' defer></script>
 </head>
 <body>
-    <header>
-        <% include('partials/header') %>
+    <header class="col-12">
+        <hr>
+        <%- include('../partials/header.ejs') %>
     </header>
-    <h1>Olá, <%= nome %>!</h1>
-    <h2>O que deseja fazer hoje?</h2>
-    <nav>
-        <ul>
-            <li><a href="/usuarios/novaFestaPagina">Criar nova festa</a></li>
-            <li><a href="/usuarios/festasContratadas">Ver festas contratadas</a></li>
-            <li>
-                <form action="/usuarios/logout" method="post">
-                    <button type="submit">Sair</button>
-                </form>
-            </li>
-        </ul>
+    <main>
+        <h1>Olá, <%= nome %>!</h1>
+        <h2>O que deseja fazer hoje?</h2>
+            <a href="/usuarios/novaFestaPagina">Criar nova festa</a>
+            <a href="/usuarios/festasContratadas">Ver festas contratadas</a>
+            <a href="/usuarios/perfil"><img class="icon" src="/Imagens/profilePic.png" alt=""></a>
+            <form action="/usuarios/logout" method="post">
+               <button type="submit">Sair</button>
+            </form>
+    </main>
 </body>
 </html>

@@ -5,19 +5,28 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Cadastro</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
     <script src='main.js'></script>
 </head>
 <body>
-    <form action="/usuarios/cadastroContratante" method="post">
-        <h3>Venha realizar seu sonho conosco!</h3><br>
-        <h4>Cadastre-se</h4>
-        <input type="text" name="nome" placeholder="Nome Completo:"><br>
-        <input type="text" name="userName" placeholder="Nome de Usuário:"><br>
-        <input type="text" name="email" placeholder="Email:"><br>
-        <input type="text" name="CPF" placeholder="CPF:"><br>
-        <input type="password" name="senha" placeholder="Senha:"><br>
-        <button type="submit">Cadastrar-se</button>
-    </form>
+        <%- include('../partials/header.ejs') %>
+    <section class="login">
+        <form action="/usuarios/cadastroContratante" method="post">
+            <h3>Venha realizar seu sonho conosco!</h3><br>
+            <h4>Cadastre-se</h4>
+            <h4>Nome:</h4>
+            <input type="text" name="nome"><br>
+            <h4>Nome de Usuário:</h4>
+            <input type="text" name="userName"><br>
+            <h4>Email:</h4>
+            <input type="text" name="email"><br>
+            <h4>CPF:</h4>
+            <input type="text" name="CPF"><br>
+            <h4>Senha:</h4>
+            <input type="password" name="senha"><br>
+            <button type="submit">Cadastrar-se</button>
+        </form>
+    </section>
 </body>
 </html>

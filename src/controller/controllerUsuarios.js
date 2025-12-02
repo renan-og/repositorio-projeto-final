@@ -30,7 +30,7 @@ const cadastroContratante = async (req, res) =>
         res.status(201).render('pages/contratanteMainPage', { nome: req.session.usuario.nome });
     } catch(error) {
             console.error(error);
-            res.status(500).render('pages/cadastroPage', { error });
+            res.status(400).render('pages/paginaErro', { error });
         }
 };
 //validação do login
@@ -38,10 +38,10 @@ const loginUsuario = async (req, res) =>
 {
     try
     {
-        const nome = req.body.usuario;
+        const userName = req.body.userName;
         const senha = req.body.senha;
         //finOne procura uma linha onde o valor de nome seja igual ao valor da requisição do usuario no login
-        if(nome == 'admin' && senha == 'admin123'){
+        if(userName == 'admin' && senha == 'admin123'){
             req.session.usuario = 
             {
                 userName: 'admin098',
@@ -52,7 +52,7 @@ const loginUsuario = async (req, res) =>
         }
         const usuarioExistente = await usuarios.findOne({
             where:{
-                nome: nome
+                userName: userName
             }
         });
         if (!usuarioExistente)
@@ -80,7 +80,8 @@ const loginUsuario = async (req, res) =>
 
     } catch (error) 
         {
-            console.log('Ocorreu um erro inesperado: ' + error)
+            console.log('Ocorreu um erro inesperado: ' + error);
+            res.status(401).render('pages/paginaErro', { error });
         }
 };
 //realizar logaut
@@ -108,7 +109,7 @@ const festasUsuarioSessao = async ( req, res ) => {//para que o usuario logado p
         );
         res.status(200).render('usuario/festasContratadas', { festasContratadas, nome: req.session.usuario.nome }); //enviar todas as festas a página
     } catch (erro) {
-        res.status(500).render('usuario/festasContratadas', { erro, festasContratadas: [] });
+        res.status(500).render('pages/paginaErro', { error });
     };
 };
 
@@ -156,13 +157,17 @@ const paginaCadastro = (req, res) =>
 
 const excluirConta = async (req, res) => {
     try{
-        const usuario = await usuarios.findOne({
+        const festasUsuario = await festasModel.destroy({
+            where: {idUsuario: req.session.usuario.idUsuario}
+        })
+        const usuario = await usuarios.destroy({
             where:{idUsuario: req.session.usuario.idUsuario}
         });
-        await usuario.destroy();
+
         res.redirect('/');
     } catch(error){
         console.error("Erro inesperado: ");
+        res.status(401).render('pages/paginaErro', { error: error });
     };
 };
 
@@ -191,10 +196,10 @@ const editarInfos = async (req, res) => {
                 idUsuario: req.session.usuario.idUsuario
             }
         });
-        res.status(200).render('usuarios/perfilUsuario', { mensagem: "Atualização realizada com sucesso", usuario: usuarioEditado});
+        res.status(200).render('usuario/perfilUsuario', { mensagem: "Atualização realizada com sucesso", usuario: usuarioEditado});
     } catch(error){
         console.log("ERRO: " + error);
-        res.status(200).render('usuarios/perfilUsuario', {erro: "Ops, tivemos um erro com a edição, tente novamente mais tarde"});
+        res.status(500).render('usuario/perfilUsuario', {error: error});
     }
 }
 

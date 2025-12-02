@@ -83,7 +83,7 @@ main{
     gap: 10px;
 }
 
-#container {
+.container {
   text-align: center;
   font-size: 25px;
   display: flex;
@@ -92,7 +92,7 @@ main{
   height: 300px;
 }
 
-#login{
+.login{
   border-radius: 20px;
   background-color: #121f2e;
   align-self: center;
@@ -107,4 +107,38 @@ main{
   color: white;
   font-size: 35px;
   padding: 10px 20px;
+}
+
+h4{
+  color: white;
+  font-size: 15px;
+}
+input{
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    width: 250px;
+    background-color: #296da9;
+    color: white;
+    font-size: 15px;
+}
+input::placeholder{
+    color: white;
+    font-size: 15px;
+    padding-left: 5px;
+}
+button{
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    width: 100px;
+    background-color: #296da9;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+input:focus{
+    outline: none;
+    background-color:#296da9;
 }

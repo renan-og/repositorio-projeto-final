@@ -2,22 +2,55 @@ const usuarios = require('../model/modelUsuarios');
 const festasModel = require('../model/modelFestas');
 const bcrypt = require('bcrypt');
 const { where } = require('sequelize');
+const { Op } = require('sequelize');
 
 const cadastroContratante = async (req, res) =>
 {
     try {
+
+        
         const nome = req.body.nome;
         const userName = req.body.userName
-        const CPF = req.body.CPF;
+        const cpf = req.body.CPF;
         const email = req.body.email;
         const senha = req.body.senha;
+        
+        const existente = await usuarios.findOne({
+            where:{
+                [Op.or]:[
+                    {userName:userName},
+                    {CPF:cpf},
+                    {email:email}
+                ]
+            }
+        })
+        if(existente){ //faz a verificaçao para saber se existe algum campo com entrada duplicada 
+            if(existente.userName == userName){
+                res.status(500).render('pages/cadastroPage', { mensagem: "Nome de usuario ja cadastrado"});
+                    console.log("Nome de usuario ja cadastrado");
+                    return;
+                }else if(existente.CPF == cpf){
+                    res.status(500).render('pages/cadastroPage', { mensagem: "CPF ja cadastrado"});
+                        console.log("CPF ja cadastrado");
+                        return;
+                }else if(existente.email == email){
+                    res.status(500).render('pages/cadastroPage', { mensagem: "email ja cadastrado"});
+                        console.log("email ja cadastrado");
+                        return;
+                }
+            };
+
+        if(nome == "" || userName == "" || cpf == "" || email == "" || senha == ""){
+            res.status(500).render('pages/cadastroPage', { mensagem: "Campos em branco, preencha-os"});
+            return
+        }
 
         const senhaHash = await bcrypt.hash(senha, 10);//codificação da senha no cadastro
 
         const novoContratante = await usuarios.create({
             nome: nome,
             userName: userName,
-            CPF: CPF,
+            cpf: CPF,
             email: email,
             senha: senhaHash,
         });
@@ -58,7 +91,8 @@ const loginUsuario = async (req, res) =>
         if (!usuarioExistente)
             {
                 console.log('usuario n cadastrado')
-                res.status(404).render('pages/cadastroPage')//se o usuario ainda não for cadastrado/findOne não encontrar uma linha correspondente, ele é redirecionado para a pagina de cadastro   
+                res.render('pages/cadastroPage', { mensagem: null })//se o usuario ainda não for cadastrado/findOne não encontrar uma linha correspondente, ele é redirecionado para a pagina de cadastro   
+                return;
             };
         const verificacaoSenha = await bcrypt.compare(senha, usuarioExistente.senha);
         //caso ja seja cadastrado, ele vai para a verificação da senha
@@ -152,7 +186,7 @@ const criarFesta = async (req, res) => {
 }
 const paginaCadastro = (req, res) =>
 {
-    res.render('pages/cadastroPage')
+    res.render('pages/cadastroPage', { mensagem: null })
 };
 
 const excluirConta = async (req, res) => {

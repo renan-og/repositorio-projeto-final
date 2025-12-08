@@ -5,35 +5,38 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Painel de controle</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
     <script src='main.js'></script>
 </head>
 <body>
     <h1>Olá, <%= nome %>, é bom te ver de novo!</h1>
     <h2>O que precisa para hoje?</h2>
-    <form action="/admin/setFuncionarioPagina">
-        <h1>Querendo contratar alguém hoje?</h1>
-        <button>Contratar</button>
-    </form>
-    <br>
-    <form action="/admin/getContratantes">
-        <h1>Vamos ver nossos clientes?</h1>
-        <button>Ver clientes</button>
-    </form>
-    <br>
-    <form action="/admin/getFuncionarios">
-        <h1>Como devem estar nossos funcionários hoje?</h1>
-        <button>Ver funcionários</button>
-    </form>
-    <br>
-    <form action="/admin/setFuncionarioFestaPagina">
-        <h1>Alguém disponível para trabalhar hoje?</h1>
-        <button>Designar funcionario</button>
-    </form>
-    <br>
-    <form action="/admin/getFestas">
-        <h1>Quais festas estão agendadas para hoje?</h1>
-        <button>Ver festas</button>                             
-    </form>
+    <section class="col-6">
+        <form action="/admin/setFuncionarioPagina">
+            <h1>Querendo contratar alguém hoje?</h1>
+            <button>Contratar</button>
+        </form>
+        <br>
+        <form action="/admin/getContratantes">
+            <h1>Vamos ver nossos clientes?</h1>
+            <button>Ver clientes</button>
+        </form>
+        <br>
+        <form action="/admin/getFuncionarios">
+            <h1>Como devem estar nossos funcionários hoje?</h1>
+            <button>Ver funcionários</button>
+        </form>
+        <br>
+        <form action="/admin/setFuncionarioFestaPagina">
+            <h1>Alguém disponível para trabalhar hoje?</h1>
+            <button>Designar funcionario</button>
+        </form>
+        <br>
+        <form action="/admin/getFestas">
+            <h1>Quais festas estão agendadas para hoje?</h1>
+            <button>Ver festas</button>
+        </form>
+    </section>
 </body>
 </html>

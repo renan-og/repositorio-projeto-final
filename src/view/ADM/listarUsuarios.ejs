@@ -5,22 +5,25 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Nossos Contratantes</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
     <script src='main.js'></script>
 </head>
 <body>
     <h1>Contratantes:</h1><br>
-    <% 
-        if(todosContratantes){%>
-            <% todosContratantes.forEach(contratante => {%>
-                <form action="/admin/getFestasContratante" method="post">
-                    <input type="hidden" name="idUsuario" value = <%= contratante.idUsuario %> >
-                    <dt>Nome: <%- contratante.nome %></dt>
-                    <dd>Email: <%- contratante.email %></dd>
-                    <button>Ver Festas</button>
-                </form>
-            <%})%>
-        <%}
-    %>
+    <section class="col-6">
+        <%
+            if(todosContratantes){%>
+                <% todosContratantes.forEach(contratante => {%>
+                    <form action="/admin/getFestasContratante" method="post">
+                        <input type="hidden" name="idUsuario" value = <%= contratante.idUsuario %> >
+                        <dt>Nome: <%- contratante.nome %></dt>
+                        <dd>Email: <%- contratante.email %></dd>
+                        <button>Ver Festas</button>
+                    </form>
+                <%})%>
+            <%}
+        %>
+    </section>
 </body>
 </html>

@@ -21,5 +21,10 @@
 
         <button>Confirmar edição</button>
     </form>
+    <form action="/admin/excluirFesta?_method=DELETE" method="post">
+        <input type="hidden" name="festaId" value="<%= festaId %>">
+        <button type="submit">Cancelar festa</button>
+    </form>
+    <hr>
 </body>
 </html>

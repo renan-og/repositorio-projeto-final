@@ -19,11 +19,33 @@
     %>
 
     <form action="/usuarios/novaFesta" method="POST">
-        <input type="text" name="aniversariante" placeholder="Quem é o aniversariante?">
-        <input type="date" name="data" placeholder="Data:">
-        <input type="text" name="horario" placeholder="Horário:">
-        <input type="text" name="tema" placeholder="Tema da decoração:">
-        <input type="text" name="local" placeholder="Salão de preferêcia:">
+        <h4>Aniversariante</h4>
+        <input type="text" name="aniversariante" placeholder="Quem é o aniversariante?"><br>
+        <h4>Data</h4>
+        <input type="date" name="data" placeholder="Data:"><br>
+        <h4>horario</h4>
+        <select name="horario" id="">
+            <option value="12h a 17h">12h a 17h</option>
+            <option value="18h a 00h">18h a 00h</option>
+        </select>
+        <h4>Tema</h4>
+        <select name="tema" id="">
+            <option value="Princesas">Princesas</option>
+            <option value="Ursinhos carinhosos">Ursinhos carinhosos</option>
+            <option value="Barbie">Barbie</option>
+            <option value="Herois">Herois</option>
+            <option value="Mickey">Mickey</option>
+            <option value="Hotwheels">Hotwheels</option>
+            <option value="Halloween">Halloween</option>
+            <option value="Natal">Natal</option>
+        </select>
+        <h4>Local</h4>
+        <select name="local" id="">
+            <option value="Espaço Cristal Prime">Espaço Cristal Prime</option>
+            <option value="Jardim Secreto Eventos">Jardim Secreto Eventos</option>
+            <option value="Alegria & Companhia">Alegria & Companhia</option>
+        </select>
+        <h4>Quantos convidados?</h4>
         <input type="text" name="qtdConvidados" placeholder="Para quantas pessoas?">
         <button type="submit">Contratar festa</button>
     </form>

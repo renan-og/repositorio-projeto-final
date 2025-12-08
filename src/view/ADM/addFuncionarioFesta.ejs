@@ -11,32 +11,32 @@
 <body>
     <h1>Atribuir funcionários a festa:</h1>
     <% if(todasAsFestas.length != 0)
-    { %>
-             <form action="/admin/setFuncionarioFesta" method="POST">
-                 <% todasAsFestas.forEach(festa=>
-                 { %>
-                    <dd> Aniversariante: <%= festa.aniversariante %></dd>
-                    <dd> Data: <%= festa.data %></dd>
-                    <dd> Tema: <%= festa.tema %></dd>
-                    <dd> Salão: <%= festa.local %></dd>
-                    <dd> Convidados: <%= festa.qtdConvidados %></dd>
-                    <dd> Horário: <%= festa.horario %></dd>
-                    <dd><input type="text" value= <%- festa.idFesta %> name="idFesta"></dd>
-                    <dd>
-                        <select name="idFuncionario">
-                            <%
-                                todosFuncionarios.forEach(funcionario =>{%>
-                                    <option value="<%= funcionario.idFuncionario %>"><%= funcionario.nome %></option>
-                                <%})
-                            %>
-                        </select>
-                    </dd>
-                             <% }) %>
-                <button>Designar funcionario</button>
-             </form> 
-    <% }else{ %>
+    {%>
+        <%todasAsFestas.forEach(festa => 
+        {%>
+            <hr>
+            <form action="/admin/setFuncionarioFesta" method="post">
+                   <dd> Aniversariante: <%= festa.aniversariante %></dd>
+                   <dd> Data: <%= festa.data %></dd>
+                   <dd> Tema: <%= festa.tema %></dd>
+                   <dd> Salão: <%= festa.local %></dd>
+                   <dd> Convidados: <%= festa.qtdConvidados %></dd>
+                   <dd> Horário: <%= festa.horario %></dd>
+                   <dd><input type="hidden" value="<%- festa.idFesta %>" name="idFesta"></dd>
+                   <dd>
+                       <select name="idFuncionario">
+                           <%todosFuncionarios.forEach(funcionario =>{%>
+                                   <option value="<%= funcionario.idFuncionario %>"><%= funcionario.nome %></option>
+                               <%})%>
+                       </select>
+                   </dd>
+                   <button>Designar funcionario</button>
+                   <hr>
+            </form> 
+        <%})%>
+    <%}else{%>
                 <p>Nenhuma festa agendada</p>
-            <% } 
+            <%} 
     %>
 </body>
 </html>

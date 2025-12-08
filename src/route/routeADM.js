@@ -11,7 +11,7 @@ router.get('/setFuncionarioFestaPagina', controllerADM.adicionarFuncionarioFesta
 router.post('/setFuncionarioFesta', controllerADM.adicionarFuncionarioFesta)//atribuir um funcionario a uma festa
 router.get('/getFestas', controllerADM.todasFestas);//ver todas as festas
 router.post('/getFestasContratante', controllerADM.festasContratante);//ver festas de um contratante
-router.post('/excluirUsuario', controllerADM.excluirUsuario);//excluir um usuario
+router.post('/excluirFuncionario', controllerADM.excluirFuncionario);//excluir um usuario
 router.post('/excluirFesta', controllerADM.excluirFesta);//excluir uma festa
 router.get('/paginaEditarFesta', controllerADM.editarFestasPage);//pagina de edição de festa
 router.post('atualizarFesta', controllerADM.atualizarFesta);//editar uma festa

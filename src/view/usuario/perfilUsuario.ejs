@@ -11,15 +11,14 @@
     <script src='/style.js' defer></script>
 </head>
 <body>
-    <header>
         <%- include('../partials/header.ejs') %>
-    </header>
     <main>
         <form action="/usuarios/atualizarInformacoes" method="post" class="col-3">
             <% 
                 if(usuario){%>
-                    <input type="text" name="userName" placeholder="<%- usuario.userName %>">
-                    <input type="password" name="senha" placeholder="<%- usuario.senha %>">
+                    <input type="text" name="userName" placeholder="Nome de usuario">
+                    <input type="password" name="novaSenha" placeholder="Nova senha">
+                    <input type="password" name="confirmarSenha" placeholder="Confirme sua senha antiga">
                     <button type="submit">Salvar mudanças</button>
                 <%}
             %>
@@ -27,6 +26,7 @@
         <form action="/usuarios/excluirConta" method="post">
             <button>Excluir conta</button>
         </form>
+        <p><%- mensagem %></p>
     </main>
 </body>
 </html>

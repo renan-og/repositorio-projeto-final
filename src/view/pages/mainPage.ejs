@@ -45,7 +45,7 @@
         <button type="submit" id="enterbutton">Entrar</button>
       </form>
       <% if(erroSenha) {%>
-      <p>Ops, tivemos um erro com a senha, escreva de novo:</p>
+      <p><%- erroSenha %></p>
       <%} %>
     </section>
     

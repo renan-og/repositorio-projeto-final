@@ -13,11 +13,16 @@
     <% 
         if(todosFuncionarios){%>
             <% todosFuncionarios.forEach(funcionario => {%>
-                <form action="">
+                <hr>
+                <form action="/admin/excluirFuncionario" method="post">
                     <dt>Nome: <%= funcionario.nome %></dt>
+                    <dd>Usuario: <%= funcionario.userName %></dd>
                     <dd>Email: <%= funcionario.email %></dd>
                     <dd>Função: <%= funcionario.funcao %></dd>
+                    <input type="hidden" name="idFuncionario" value=" <%- funcionario.idFuncionario %>">
+                    <button>Demitir</button>
                 </form>
+                <hr>
             <%})%>
         <%}
     %>

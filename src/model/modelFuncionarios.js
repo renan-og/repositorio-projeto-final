@@ -34,11 +34,15 @@ const funcionarios = sequelize.define('funcionarios',
         funcao: {
             type: DataTypes.STRING,
             allowNull: false    
+        },
+        tipo: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     }, {
         tableName: 'funcionarios',
         timestamps: false
-    }
+    },
 );
 
 module.exports = funcionarios;

@@ -4,14 +4,17 @@ const festa_funcionario = require('../model/modelFesta_Funcionario');
 const festasModel = require('../model/modelFestas');
 const bcrypt = require('bcrypt');
 const { where, INTEGER } = require('sequelize');
+const { Op } = require('sequelize');
+const festas = require('../model/modelFestas');
 
 const listarFuncionarios = async (req, res) => {
     try {
         const todosFuncionarios = await funcionarios.findAll();
 
-        res.status(201).render('ADM/listarFuncionarios', { todosFuncionarios });
-    } catch (err) {
-        res.status(500).render('ADM/listarFuncionarios');
+
+        res.status(201).render('ADM/listarFuncionarios', { todosFuncionarios: todosFuncionarios });
+    } catch (error) {
+        res.status(500).render('pages/paginaErro', {error:error});
     }
 };
 
@@ -19,10 +22,10 @@ const cadastroFuncionario = async (req, res) =>
 {
     try {
         const nome = req.body.nome;
-        const CPF = req.body.CPF;
+        const cpf = req.body.cpf;
         const email = req.body.email;
         const funcao = req.body.funcao;
-        var numeroFuncao = 0; 
+        var numero = 0; 
         switch(funcao)
         {
             case "Chefe de cozinha":
@@ -48,16 +51,35 @@ const cadastroFuncionario = async (req, res) =>
             case "Equipe de Limpeza":
                 numero = 10;
         };
-        const userName = String(nome+"_"+numeroFuncao);
+        const existente = await funcionarios.findOne({
+                    where:{
+                        [Op.or]:[
+                            {CPF:cpf},
+                            {email:email}
+                    ]
+                }
+            });
+            if(existente){
+            if(existente.CPF == cpf){
+                res.status(500).render('ADM/contratarFuncionario', { mensagem: "Funcionarios ja cadastrado"});
+                    console.log("CPF ja cadastrado");
+                    return;
+            }else if(existente.email == email){
+                res.satus(500).render('ADM/contratarFuncionario', { mensagem: "Funcionario ja cadastrado"});
+            };
+        };
+
+        const userName = String(nome+"_"+numero);
         const senha = await bcrypt.hash(String(funcao + "123"), 10);
 
         const novoFuncionario = await funcionarios.create({
             nome: nome,
             userName: userName,
-            CPF: CPF,
+            CPF: cpf,
             email: email,
             senha: senha,
-            funcao: funcao
+            funcao: funcao,
+            tipo: "Funcionario"
         });
         res.render('pages/mainPageADM', { nome: req.session.usuario.nome });
 
@@ -68,7 +90,7 @@ const cadastroFuncionario = async (req, res) =>
 };
 
 const paginaContratarFuncionario = (req, res) => {
-    res.render('ADM/contratarFuncionario');
+    res.render('ADM/contratarFuncionario', { mensagem: null});
 } 
 
 const adicionarFuncionarioFestaPagina = async (req, res) => 
@@ -111,28 +133,42 @@ const listarContratantes = async (req, res) => {
     }
 };
 
-const excluirUsuario = async (req, res) =>
+const excluirFuncionario = async (req, res) =>
 {
     try
     {
-        const usuarioId = req.body.usuarioId;
+        const todosFuncionarios = await funcionarios.findAll();
+        const idsFuncionarios = todosFuncionarios.map(funcionario => funcionario.idFuncionario);//mapeia o array de funcionarios e cria um novo array apenas com os ids
+        const juncoes = await festa_funcionario.findAll({where:{idFuncionario:{[Op.in]:idsFuncionarios}}});
+
+        const idsFestas = juncoes.map(festa => festa.idFesta);
+
+        const festasAtribuidas = await festasModel.findAll({where:{idFesta:{[Op.in]:idsFestas}}});
+
+        const idFuncionario = req.body.idFuncionario;
+        await funcionarios.destroy({where:{idFuncionario: idFuncionario}});
+
+        res.status(201).render('ADM/listarFuncionarios', { todosFuncionarios, festasAtribuidas: festasAtribuidas });
     } catch(error)
     {
         console.error('Erro ao excluir usuario: '+error);
+        res.status(400).render('pages/paginaErro', { error: error });
     }
 }
 
 const todasFestas = async (req, res) => {
     try {
         const todasFestas = await festasModel.findAll();
-        res.status(200).render('ADM/todasAsFestas', { todasFestas }); //enviar todas as festas a página
-    } catch (erro) {
-        res.status(500).render('ADM/todasAsFestas', { erro });
+
+        res.status(200).render('ADM/todasAsFestas', { todasFestas: todasFestas}); //enviar todas as festas a página
+    } catch (error) {
+        res.status(500).render('pages/paginaErro', { error });
     };
 };
 
 const festasContratante = async (req, res) => {
     try {
+        
         const reqIdUsuario = parseInt(req.body.idUsuario);
         const festasContratadas = await festasModel.findAll(
             {
@@ -222,6 +258,6 @@ module.exports =
     atualizarFesta,
     excluirFesta,
     festasContratante,
-    excluirUsuario,
+    excluirFuncionario,
     adicionarFuncionarioFesta
 };

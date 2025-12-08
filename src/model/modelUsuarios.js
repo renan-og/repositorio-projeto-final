@@ -30,6 +30,10 @@ const usuarios = sequelize.define('usuarios', {//criação do modedlo da tabela 
     senha: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    tipo: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, {
     tableName: 'usuarios',

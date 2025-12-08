@@ -57,13 +57,7 @@ const cadastroContratante = async (req, res) =>
             senha: senhaHash,
             tipo: "contratante"
         });
-        req.session.usuario = 
-        {
-            idUsuario: novoContratante.idUsuario,
-            nome: novoContratante.nome,
-            email: novoContratante.email,
-        };
-        res.status(201).render('pages/contratanteMainPage', { nome: req.session.usuario.nome });
+        res.redirect('/#login');
     } catch(error) {
             console.error(error);
             res.status(400).render('pages/paginaErro', { error });
@@ -187,7 +181,7 @@ const festasUsuarioSessao = async ( req, res ) => {//para que o usuario logado p
 
 const paginaCriarFesta = (req, res) => 
 {
-    res.render('usuario/criarFesta', { nome : req.session.usuario.nome});
+    res.render('usuario/criarFesta', { mensagem: null, nome : req.session.usuario.nome});
 }
 
 const criarFesta = async (req, res) => {
@@ -199,6 +193,16 @@ const criarFesta = async (req, res) => {
         const idUsuario = parseInt(req.session.usuario.idUsuario);
         const qtdConvidados = req.body.qtdConvidados;
         const aniversariante = req.body.aniversariante;
+        
+        const festaExistente = await festasModel.findOne({where:{[Op.or]:{
+            horario:horario,
+            data:data,
+            local
+        }}});
+        if(festaExistente){
+            res.status(500).render('usuario/criarFesta', {mensagem: "Ja existe uma festa agendada para esse salão nessa data e horario, sentimos muito:<", nome: req.session.usuario.nome});
+            return;
+        }
 
         const novaFesta = await festasModel.create({
             data: data,

@@ -127,7 +127,7 @@ const loginUsuario = async (req, res) =>
                     idUsuario: funcionarioExistente.idFuncionario,
                     nome: funcionarioExistente.nome,
                     email: funcionarioExistente.email,
-                    tipo: "funcionario"
+                    tipo: "Funcionario"
                 };
     
                 const todosFuncionarios = await funcionarios.findAll();
@@ -276,7 +276,9 @@ const paginaPerfil = async (req, res) => {
 
 const editarInfos = async (req, res) => {
     try{
+        console.log("chegou pelo menos na edição");
         if(req.session.usuario.tipo == "contratante"){
+            console.log("chegou na edição");
             const usuarioLogado = await usuarios.findOne({
                 where:{
                         idUsuario: req.session.usuario.idUsuario

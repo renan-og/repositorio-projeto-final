@@ -2,7 +2,6 @@
     * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     transition-duration: 1s;
     text-decoration: none;
@@ -49,25 +48,23 @@
         display:flex;
         flex-direction: column;
         align-items: center;
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         height: 200vh;
     }
 
     .darkMode {
-    background-color: #121212;
-    color: white;
+        background-color: #121212;
+        color: white;
     }
 
     .changeTheme {
-    display: none;
+        display: none;
     }
 
     .icon {
-    width: 30px;
-    height: 30px;
+        width: 30px;
+        height: 30px;
     }
 
     #background{
@@ -122,34 +119,34 @@
     }
 
     .container {
-    text-align: center;
-    font-size: 25px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    height: 300px;
+        text-align: center;
+        font-size: 25px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        height: 300px;
     }
 
     .login{
-    border-radius: 20px;
-    background-color: #121f2e;
-    align-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 300px;
-    flex-direction: column;
+        border-radius: 20px;
+        background-color: #121f2e;
+        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 300px;
+        flex-direction: column;
     }
 
     #loginTitle {
-    color: white;
-    font-size: 35px;
-    padding: 10px 20px;
+        color: white;
+        font-size: 35px;
+        padding: 10px 20px;
     }
 
     h4{
-    color: white;
-    font-size: 15px;
+        color: white;
+        font-size: 15px;
     }
     input{
         border: none;

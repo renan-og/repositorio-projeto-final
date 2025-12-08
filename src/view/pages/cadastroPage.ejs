@@ -7,14 +7,15 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
-    <script src='main.js'></script>
+    <script src='style.js' defer></script>
 </head>
-<body>
+<body class="altura">
         <%- include('../partials/header.ejs') %>
-    <section class="login">
-        <form action="/usuarios/cadastroContratante" method="post">
-            <h3>Venha realizar seu sonho conosco!</h3><br>
-            <h4>Cadastre-se</h4>
+        <br>
+        <h1>Venha realizar seu sonho conosco!</h1>
+        <section class="container col-6">
+            <form class="login col-5" action="/usuarios/cadastroContratante" method="post">
+            <h2>Cadastre-se</h2>
             <h4>Nome:</h4>
             <input type="text" name="nome"><br>
             <h4>Nome de Usuário:</h4>
@@ -27,7 +28,9 @@
             <input type="password" name="senha"><br>
             <button type="submit">Cadastrar-se</button>
         </form>
+        <% if(mensagem){%>
+            <p><%- mensagem %></p>
+            <%} %>
     </section>
-    <p><%- mensagem %></p>
 </body>
 </html>

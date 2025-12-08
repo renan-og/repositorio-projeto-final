@@ -7,11 +7,12 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
-    <script src='main.js'></script>
+    <script src='/style.js'></script>
 </head>
 <body>
+    <%- include('../partials/header.ejs') %>
+    <section class="col-6 lista margem">
     <h1>Contratantes:</h1><br>
-    <section class="col-6">
         <%
             if(todosContratantes){%>
                 <% todosContratantes.forEach(contratante => {%>

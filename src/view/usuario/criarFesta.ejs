@@ -6,10 +6,11 @@
     <title>Criar Festa</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
+    <script src='/style.js' defer></script>
 </head>
-<body>
-    <main class="container">
+<body class="altura1">
+    <%- include('../partials/header.ejs') %>
+    <main class="container margem">
     <% 
     if(nome)
         {%>    
@@ -21,37 +22,39 @@
         <%}
     %>
 
-        <form action="/usuarios/novaFesta" method="POST" class="col-2">
-            <h4>Aniversariante</h4>
-            <input type="text" name="aniversariante" placeholder="Quem é o aniversariante?"><br>
-            <h4>Data</h4>
-            <input type="date" name="data" placeholder="Data:"><br>
-            <h4>horario</h4>
-            <select name="horario" id="">
-                <option value="12h a 17h">12h a 17h</option>
-                <option value="18h a 00h">18h a 00h</option>
-            </select>
-            <h4>Tema</h4>
-            <select name="tema" id="">
-                <option value="Princesas">Princesas</option>
-                <option value="Ursinhos carinhosos">Ursinhos carinhosos</option>
-                <option value="Barbie">Barbie</option>
-                <option value="Herois">Herois</option>
-                <option value="Mickey">Mickey</option>
-                <option value="Hotwheels">Hotwheels</option>
-                <option value="Halloween">Halloween</option>
-                <option value="Natal">Natal</option>
-            </select>
-            <h4>Local</h4>
-            <select name="local" id="">
-                <option value="Espaço Cristal Prime">Espaço Cristal Prime</option>
-                <option value="Jardim Secreto Eventos">Jardim Secreto Eventos</option>
-                <option value="Alegria & Companhia">Alegria & Companhia</option>
-            </select>
-            <h4>Quantos convidados?</h4>
-            <input type="text" name="qtdConvidados" placeholder="Para quantas pessoas?">
-            <button type="submit">Contratar festa</button>
-        </form>
+        <section class="formGenerico">
+            <form action="/usuarios/novaFesta" method="POST" class="col-5">
+                <h4>Aniversariante</h4>
+                <input type="text" name="aniversariante">
+                <h4>Data</h4>
+                <input type="date" name="data">
+                <h4>horario</h4>
+                <select name="horario" id="">
+                    <option value="12h a 17h">12h a 17h</option>
+                    <option value="18h a 00h">18h a 00h</option>
+                </select>
+                <h4>Tema</h4>
+                <select name="tema">
+                    <option value="Princesas">Princesas</option>
+                    <option value="Ursinhos carinhosos">Ursinhos carinhosos</option>
+                    <option value="Barbie">Barbie</option>
+                    <option value="Herois">Herois</option>
+                    <option value="Mickey">Mickey</option>
+                    <option value="Hotwheels">Hotwheels</option>
+                    <option value="Halloween">Halloween</option>
+                    <option value="Natal">Natal</option>
+                </select>
+                <h4>Local</h4>
+                <select name="local" id="">
+                    <option value="Espaço Cristal Prime">Espaço Cristal Prime</option>
+                    <option value="Jardim Secreto Eventos">Jardim Secreto Eventos</option>
+                    <option value="Alegria & Companhia">Alegria & Companhia</option>
+                </select>
+                <h4>Quantos convidados?</h4>
+                <input type="text" name="qtdConvidados">
+                <button type="submit">Contratar</button>
+            </form>
+        </section>
         <% if(mensagem){%>
             <p><%- mensagem %></p>
             <%} %>

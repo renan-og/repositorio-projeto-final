@@ -7,25 +7,28 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
-    <script src='main.js'></script>
+    <script src='/style.js'></script>
 </head>
 <body>
-    <h1>Funcionários:</h1><br>
-    <% 
-        if(todosFuncionarios){%>
-            <% todosFuncionarios.forEach(funcionario => {%>
-                <hr>
-                <form action="/admin/excluirFuncionario" method="post">
-                    <dt>Nome: <%= funcionario.nome %></dt>
-                    <dd>Usuario: <%= funcionario.userName %></dd>
-                    <dd>Email: <%= funcionario.email %></dd>
-                    <dd>Função: <%= funcionario.funcao %></dd>
-                    <input type="hidden" name="idFuncionario" value=" <%- funcionario.idFuncionario %>">
-                    <button>Demitir</button>
-                </form>
-                <hr>
-            <%})%>
-        <%}
-    %>
+    <%- include('../partials/header.ejs') %>
+    <section class="lista col-6 margem">
+        <h1>Funcionários:</h1><br>
+        <%
+            if(todosFuncionarios){%>
+                <% todosFuncionarios.forEach(funcionario => {%>
+                    <hr>
+                    <form action="/admin/excluirFuncionario" method="post">
+                        <dt>Nome: <%= funcionario.nome %></dt>
+                        <dd>Usuario: <%= funcionario.userName %></dd>
+                        <dd>Email: <%= funcionario.email %></dd>
+                        <dd>Função: <%= funcionario.funcao %></dd>
+                        <input type="hidden" name="idFuncionario" value=" <%- funcionario.idFuncionario %>">
+                        <button>Demitir</button>
+                    </form>
+                    <hr>
+                <%})%>
+            <%}
+        %>
+    </section>
 </body>
 </html>

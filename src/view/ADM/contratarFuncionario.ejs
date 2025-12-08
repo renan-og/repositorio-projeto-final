@@ -6,29 +6,35 @@
     <title>Escolha dos Funcionários</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
-    <script src='main.js'></script>
+    <script src='/style.js' defer></script>
 </head>
-<body>
-    <h1>Contratar Funcionário</h1>
-    <form action="/admin/setFuncionario" method="post">
-        <input type="text" name="nome" placeholder="Nome Completo">
-        <input type="text" name="cpf" placeholder="CPF">
-        <input type="email" name="email" placeholder="Email">
-        <select id="funcao" name="funcao">
-            <option value="Chefe de cozinha">Chefe de cozinha</option>
-            <option value="Ajudante de Cozinha">Ajudante de Cozinha</option>
-            <option value="Garçom">Garçom</option>
-            <option value="Barman/Barwoman">Barman/Barwoman</option>
-            <option value="Recepcionista">Recepcionista</option>
-            <option value="Segurança">Segurança</option>
-            <option value="Monitor">Monitor</option>
-            <option value="Recrador">Recrador</option>
-            <option value="Gerente de Eventos">Gerente de Eventos</option>
-            <option value="Cerimonialista">Cerimonialista</option>
-            <option value="Equipe de Limpeza">Equipe de Limpeza</option>
-        </select>
-        <button type="submit">Contratar</button>
-    </form>
+<body class="altura1">
+    <%- include('../partials/header.ejs') %>
+    <section class="col-3 formGenerico margem">
+        <h1>Contratar Funcionário</h1>
+        <form class="col-4" action="/admin/setFuncionario" method="post">
+            <h4>Nome</h4>
+            <input type="text" name="nome">
+            <h4>CPF</h4>
+            <input type="text" name="cpf">
+            <h4>Email</h4>
+            <input type="email" name="email">
+            <h4>Função</h4>
+            <select id="funcao" name="funcao">
+                <option value="Chefe de cozinha">Chefe de cozinha</option>
+                <option value="Ajudante de Cozinha">Ajudante de Cozinha</option>
+                <option value="Garçom">Garçom</option>
+                <option value="Barman/Barwoman">Barman/Barwoman</option>
+                <option value="Recepcionista">Recepcionista</option>
+                <option value="Segurança">Segurança</option>
+                <option value="Monitor">Monitor</option>
+                <option value="Recrador">Recrador</option>
+                <option value="Gerente de Eventos">Gerente de Eventos</option>
+                <option value="Cerimonialista">Cerimonialista</option>
+                <option value="Equipe de Limpeza">Equipe de Limpeza</option>
+            </select>
+            <button type="submit">Contratar</button>
+        </form>
+    </section>
 </body>
 </html>

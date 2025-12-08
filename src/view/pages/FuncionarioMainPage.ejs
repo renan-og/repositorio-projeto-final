@@ -6,29 +6,32 @@
     <title>Bem vindo <%= nome %></title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
     <script src='main.js'></script>
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
 
-    <h1>Ola <%- nome %>, e bom ter voce conosco!</h1>
-    <h2>Suas festas</h2>
-    <dl>
-        <%
-            if(festas && festas.length != 0){%>
-                <%festas.forEach(festa=>{%>
-                <hr>
-                <li>
-                    <dt>Aniversariante: <%- festa.aniversariante %></dt>
-                    <dd>Data: <%- festa.data %></dd>
-                    <dd>Horario: <%- festa.horario %></dd>
-                    <dd>Convidados: <%- festa.qtdConvidados %></dd>
-                </li>
-                <hr>
-            <%})%>
-                <%}
-         %>
-    </dl>
+    <main>
+        <h1>Olá <%- nome %>, é bom ter você conosco!</h1>
+        <h2>Suas festas:</h2>
+        <section class="lista">
+            <dl>
+                <%
+                    if(festas && festas.length != 0){%>
+                        <%festas.forEach(festa=>{%>
+                        <hr>
+                        <li>
+                            <dt>Aniversariante: <%- festa.aniversariante %></dt>
+                            <dd>Data: <%- festa.data %></dd>
+                            <dd>Horário: <%- festa.horario %></dd>
+                            <dd>Convidados: <%- festa.qtdConvidados %></dd>
+                        </li>
+                        <hr>
+                    <%})%>
+                        <%}
+                 %>
+            </dl>
+        </section>
+    </main>
 </body>
 </html>

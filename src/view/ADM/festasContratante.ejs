@@ -6,27 +6,36 @@
     <title>Festas Contratadas</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
-    <script src='main.js'></script>
+    <script src='/style.js' defer></script>
 </head>
-<body>
-    <h1>Festas Contratadas</h1>
-    <dl>
-        <%
-        if(festasContratadas){ %><!--caso exista algo na tabela de festas, as exibe-->
-            <% festasContratadas.forEach(festa=>{ %>
-                <hr>
-                <dd> Aniversariante: <%= festa.aniversariante %></dd>
-                <dd> Data: <%= festa.data %></dd>
-                <dd> Tema: <%= festa.tema %></dd>
-                <dd> Salão: <%= festa.local %></dd>
-                <dd> Convidados: <%= festa.qtdConvidados %></dd>
-                <dd> Horário: <%= festa.horario%></dd>
-                <hr>
-            <% }) %> <% } else { %><!--se não houver festas agendadas, exibe a mensagem-->
-                <p>Este contratante ainda não agendou nenhuma festa</p>
-                <% } 
-        %>
-    </dl>
+<body class="altura1">
+    <%- include('../partials/header.ejs') %>
+    <section class="lista col-6 margem">
+        <h1>Festas Contratadas</h1>
+        <dl>
+            <%
+            if(festasContratadas){ %><!--caso exista algo na tabela de festas, as exibe-->
+                <% festasContratadas.forEach(festa=>{ %>
+                    <hr>
+                    <dd> Aniversariante: <%= festa.aniversariante %></dd>
+                    <dd> Data: <%= festa.data %></dd>
+                    <dd> Tema: <%= festa.tema %></dd>
+                    <dd> Salão: <%= festa.local %></dd>
+                    <dd> Convidados: <%= festa.qtdConvidados %></dd>
+                    <dd> Horário: <%= festa.horario%></dd>
+                    <form action="/admin/paginaEditarFesta" method="get">
+                        <input type="hidden" name="festaId" value="<%- festa.idFesta%>">
+                        <input type="hidden" name="qtdConvidados" value="<%- festa.qtdConvidados %>">
+                        <input type="hidden" name="data" value="<%- festa.data %>">
+                        <input type="hidden" name="horario" value="<%- festa.horario %>">
+                        <button>Editar</button>
+                    </form>
+                    <hr>
+                <% }) %> <% } else { %><!--se não houver festas agendadas, exibe a mensagem-->
+                    <p>Este contratante ainda não agendou nenhuma festa</p>
+                    <% }
+            %>
+        </dl>
+    </section>
 </body>
 </html>

@@ -6,38 +6,40 @@
     <title>Atribuir funcionários a festa</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
-    <script src='main.js'></script>
+    <script src='/style.js' defer></script>
 </head>
-<body>
-    <h1>Atribuir funcionários a festa:</h1>
-    <% if(todasAsFestas.length != 0)
-    {%>
-        <%todasAsFestas.forEach(festa => 
+<body class="altura1">
+    <%- include('../partials/header.ejs') %>
+    <section name="" id="" class="lista col-6 margem">
+        <h1>Atribuir funcionários a festa:</h1>
+        <% if(todasAsFestas.length != 0)
         {%>
-            <hr>
-            <form action="/admin/setFuncionarioFesta" method="post">
-                   <dd> Aniversariante: <%= festa.aniversariante %></dd>
-                   <dd> Data: <%= festa.data %></dd>
-                   <dd> Tema: <%= festa.tema %></dd>
-                   <dd> Salão: <%= festa.local %></dd>
-                   <dd> Convidados: <%= festa.qtdConvidados %></dd>
-                   <dd> Horário: <%= festa.horario %></dd>
-                   <dd><input type="hidden" value="<%- festa.idFesta %>" name="idFesta"></dd>
-                   <dd>
-                       <select name="idFuncionario">
-                           <%todosFuncionarios.forEach(funcionario =>{%>
-                                   <option value="<%= funcionario.idFuncionario %>"><%= funcionario.nome %></option>
-                               <%})%>
-                       </select>
-                   </dd>
-                   <button>Designar funcionario</button>
-                   <hr>
-            </form> 
-        <%})%>
-    <%}else{%>
-                <p>Nenhuma festa agendada</p>
-            <%} 
-    %>
+            <%todasAsFestas.forEach(festa =>
+            {%>
+                <hr>
+                <form action="/admin/setFuncionarioFesta" method="post">
+                       <dd> Aniversariante: <%= festa.aniversariante %></dd>
+                       <dd> Data: <%= festa.data %></dd>
+                       <dd> Tema: <%= festa.tema %></dd>
+                       <dd> Salão: <%= festa.local %></dd>
+                       <dd> Convidados: <%= festa.qtdConvidados %></dd>
+                       <dd> Horário: <%= festa.horario %></dd>
+                       <dd><input type="hidden" value="<%- festa.idFesta %>" name="idFesta"></dd>
+                       <dd>
+                           <select name="idFuncionario">
+                               <%todosFuncionarios.forEach(funcionario =>{%>
+                                       <option value="<%= funcionario.idFuncionario %>"><%= funcionario.nome %></option>
+                                   <%})%>
+                           </select>
+                       </dd>
+                       <button>Designar funcionario</button>
+                       <hr>
+                </form>
+            <%})%>
+        <%}else{%>
+                    <p>Nenhuma festa agendada</p>
+                <%}
+        %>
+    </section>
 </body>
 </html>

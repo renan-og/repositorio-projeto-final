@@ -10,8 +10,9 @@
     <script src='main.js'></script>
 </head>
 <body>
+    <%- include('../partials/header.ejs') %>
     <h1>Festas Contratadas</h1>
-    <dl>
+    <dl class="lista col-7">
         <%
         if(festasContratadas.length != 0){ %><!--caso exista algo na tabela de festas, as exibe-->
             <% festasContratadas.forEach(festa=>{ %>
@@ -29,8 +30,5 @@
                 <% } 
         %>
     </dl>
-    <form action="/usuarios/logout" method="post">
-        <button>Sair</button>
-    </form>
 </body>
 </html>

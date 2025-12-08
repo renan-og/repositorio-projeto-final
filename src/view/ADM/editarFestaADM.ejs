@@ -9,23 +9,25 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
     <script src='main.js'></script>
 </head>
-<body>
-    <h1>Editar Informações de uma festa:</h1>
-    <form action="/admin/atualizarFesta?_method=PATCH" method="post">
-        <input type="hidden" name="festaId" value="<%= festaId %>">
-
-        <input type="text" name="qtdConvidados" placeholder="<%= qtdConvidados %>">
-
-        <input type="text" name="horario"  placeholder="<%= horario %>">
-        
-        <input type="date" name="data" placeholder="<%= data %>">
-
-        <button>Confirmar edição</button>
-    </form>
-    <form action="/admin/excluirFesta?_method=DELETE" method="post">
-        <input type="hidden" name="festaId" value="<%= festaId %>">
-        <button type="submit">Cancelar festa</button>
-    </form>
-    <hr>
+<body class="altura1">
+    <%- include('../partials/header.ejs') %>
+    <section class="formGenerico margem col-4">
+        <h1>Editar Informações de uma festa:</h1>
+        <form class="col-6" action="/admin/atualizarFesta?_method=PATCH" method="post">
+            <input type="hidden" name="festaId" value="<%= festaId %>">
+            <h4>Convidados</h4>
+            <input type="text" name="qtdConvidados" placeholder="<%= qtdConvidados %>">
+            <h4>Horario</h4>
+            <input type="text" name="horario"  placeholder="<%= horario %>">
+            <h4>Data</h4>
+            <input type="date" name="data" placeholder="<%= data %>">
+            <button>Confirmar edição</button>
+        </form>
+        <form action="/admin/excluirFesta?_method=DELETE" method="post">
+            <input type="hidden" name="festaId" value="<%= festaId %>">
+            <button type="submit">Cancelar festa</button>
+        </form>
+        <hr>
+    </section>
 </body>
 </html>

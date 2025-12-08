@@ -1,146 +1,437 @@
-@media (min-width: 1920px) {
 *{
-  margin: 0;
-  padding: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  transition-duration: 1s;
-  text-decoration: none;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition-duration: 1s;
+    text-decoration: none;
 }
-
-body{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.altura1{
+  height: 100vh;
+}
+.altura2{
   height: 200vh;
-  gap: 100px;
 }
-.altura{
-  height: 100vh;
+.margem{
+  margin-top: 100px;
 }
-.darkMode {
-  background-color: #121212;
-  color: white;
+hr{
+  width: 98%;
+  height: 2px;
+  border-color: rgb(255, 255, 255);
 }
-
-.changeTheme {
-  display: none;
-}
-
-.icon {
-  width: 30px;
-  height: 30px;
-}
-
-#background{
-  display: flex;
-  justify-content: center;
-  background-image: url(/Imagens/background2.jpg);
-  background-size: cover;
-  height: 100vh;
-}
-
-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f8f9fa;
-  height: 50px;
-  position: fixed;
-}
-
-main{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 100vh;
-}
-
-#changeTheme{
-  width: 20px;
-}
-
-#middle{
-  color: white;
+.lista{
+  padding-left: 10px;
+  margin-top: 50px;
+  border-radius: 20px;
+  background-color: #121f2e;
   align-self: center;
-  text-align: center;
-}
-
-#partytitle{
-  font-size: 275px;
-}
-
-#subtitle{
-  font-size: 100px;
-}
-
-#socials{
   display: flex;
-  justify-content: right;
-  align-items: center;
-  gap: 10px;
-}
-
-.container {
-  text-align: center;
-  font-size: 25px;
-  display: flex;
+  align-items: flex-start;
+  height: 30%;
   justify-content: space-evenly;
   flex-direction: column;
-  height: 600px;
-  gap: 50px;
+  color: white;
 }
-
-.login{
+.formGenerico{
   border-radius: 20px;
   background-color: #121f2e;
   align-self: center;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height:550px;
+  height: 30%;
   flex-direction: column;
+  justify-content: space-evenly;
   color: white;
 }
-
-#loginTitle {
+select{
+  background-color: #296da9;
   color: white;
-  font-size: 35px;
-  padding: 10px 20px;
-}
-
-h4{
-  color: white;
-  font-size: 15px;
-}
-input{
-  border: none;
+  font-size: 12px;
   border-radius: 10px;
+  width: 150px;
+}
+options{
+  border-radius: 10px;
+}
+        .col-1{
+          width: 8.33%;
+          }
+          .col-2{
+          width: 16.66%;
+          }
+          .col-3{
+          width: 25%;
+          }
+          .col-4{
+          width: 33.33%;
+          }
+          .col-5{
+          width: 41.66%;
+          }
+          .col-6{
+          width: 50%;
+          }
+          .col-7{
+          width: 58.33%;
+          }
+          .col-8{
+          width: 66.66%;
+          }
+          .col-9{
+          width: 75%;
+          }
+          .col-10{
+          width: 83.33%;
+          }
+          .col-11{
+          width: 91.66%;
+          }
+          .col-12{
+          width: 100%;
+          }
+
+
+@media (min-width: 768px) and (max-width: 1919px) {
+  body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+.formGenerico{
+  border-radius: 20px;
+  background-color: #121f2e;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  height: 27%;
+  width: 60%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: white;
+}
+  .darkMode {
+    background-color: #121212;
+    color: white;
+  }
+  
+  .changeTheme {
+        display: none;
+      }
+      
+      .icon {
+        width: 25px;
+      }
+      
+      #background{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url(/Imagens/background2.jpg);
+        background-size: cover;
+        height: 100vh;
+      }
+      
+      header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        background-color: #f8f9fa;
+        height: 50px;
+      }
+      nav{
+        display: flex;
+        height: 30px;
+        font-size: 12px;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 2px;
+        width: 33%;
+      }
+      .sair{
+        background-color: rgba(red, green, blue, 0);
+        width: 25px;
+        height: 25px;
+        display: none;
+      }
+      
+      main{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      justify-content: space-evenly;
+      height: 100vh;
+    }
+      
+      #changeTheme{
+        width: 20px;
+    }
+    
+    #middle{
+        color: white;
+        text-align: center;
+      }
+      
+      #partytitle{
+        font-size: 115px;
+    }
+    
+    #subtitle{
+      font-size: 60px;
+    }
+    
+    #socials{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 27%;
+        gap: 10px;
+      }
+
+      .container {
+        text-align: center;
+        font-size: 25px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        height: 100vh;
+      }
+      .containerPerfil {
+        margin-top: 100px;
+        border-radius: 20px;
+        background-color: #121f2e;
+        text-align: center;
+        font-size: 25px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        height: 300px;
+        width: 20%;
+      }
+
+      .login{
+        border-radius: 20px;
+        background-color: #121f2e;
+        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 400px;
+        flex-direction: column;
+        color: white;
+      }
+
+      #loginTitle {
+        color: white;
+        font-size: 35px;
+        padding: 10px 20px;
+      }
+h1{
+  font-size: 30px;
+}
+h2{
+  font-size: 20px;
+}
+      h4{
+        color: white;
+        font-size: 12px;
+      }
+      input{
+        border: none;
+        border-radius: 10px;
+        height: 22px;
+        width: 150px;
+        background-color: #296da9;
+        color: white;
+        font-size: 12px;
+      }
+    input::placeholder{
+      color: white;
+    }
+    button{
+      border: none;
+      border-radius: 10px;
+      height: 25px;
+      width: 120px;
+      background-color: #296da9;
+      color: white;
+      font-size: 10px;
+      cursor: pointer;
+    }
+    input:focus{
+      outline: none;
+        background-color:#296da9;
+    }
+  }
+  @media (min-width: 1920px) {
+    body{
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .darkMode {
+      background-color: #121212;
+      color: white;
+    }
+    
+    .changeTheme {
+      display: none;
+    }
+    
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+    
+    #background{
+      display: flex;
+      justify-content: center;
+      background-image: url(/Imagens/background2.jpg);
+      background-size: cover;
+      height: 100vh;
+    }
+.formGenerico{
+  border-radius: 20px;
+  background-color: #121f2e;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  height: 60%;
+  width: 40%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: white;
+}
+    
+    header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f8f9fa;
+      height: 50px;
+      position: fixed;
+    }
+nav{
+  display: flex;
   height: 30px;
-  width: 250px;
-  background-color: #296da9;
-  color: white;
   font-size: 15px;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2px;
+  width: 20%;
 }
-input::placeholder{
-  color: white;
-  font-size: 15px;
-  padding-left: 5px;
+.sair{
+  display: none;
 }
-button{
-  margin-top: 20px;
-  border: none;
-  border-radius: 10px;
-  height: 40px;
-  width: 100px;
-  background-color: #296da9;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-}
-input:focus{
-  outline: none;
-  background-color:#296da9;
-}}
+    
+    main{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      justify-content: space-evenly;
+      height: 100vh;
+    }
+    
+    #changeTheme{
+      width: 20px;
+    }
+    
+    #middle{
+      color: white;
+      align-self: center;
+      text-align: center;
+    }
+    
+    #partytitle{
+      font-size: 275px;
+    }
+    
+    #subtitle{
+      font-size: 100px;
+    }
+    
+    #socials{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 18%;
+    }
+    
+    .container {
+      text-align: center;
+      font-size: 25px;
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+      height: 600px;
+      gap: 50px;
+    }
+    .containerPerfil {
+        margin-top: 200px;
+        border-radius: 20px;
+        background-color: #121f2e;
+        text-align: center;
+        font-size: 25px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        height: 300px;
+      }
+    
+    .login{
+      border-radius: 20px;
+      background-color: #121f2e;
+      align-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height:550px;
+      flex-direction: column;
+      color: white;
+    }
+    
+    #loginTitle {
+      color: white;
+      font-size: 35px;
+      padding: 10px 20px;
+    }
+    
+    h4{
+      color: white;
+      font-size: 15px;
+    }
+    input{
+      border: none;
+      border-radius: 10px;
+      height: 30px;
+      width: 250px;
+      background-color: #296da9;
+      color: white;
+      font-size: 15px;
+    }
+    input::placeholder{
+      color: white;
+    }
+    button{
+      margin-top: 20px;
+      border: none;
+      border-radius: 10px;
+      height: 40px;
+      width: 160px;
+      background-color: #296da9;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    input:focus{
+      outline: none;
+      background-color:#296da9;
+    }}

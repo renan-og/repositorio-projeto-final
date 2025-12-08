@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Party.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/col.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/style.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/notebook.css" />
     <script src="/style.js" defer></script>
   </head>
-  <body>
+  <body class="altura2">
 
     <%- include('../partials/header.ejs') %>
 
@@ -33,15 +31,17 @@
         </p>
       </div>
 
-      <form id="login" class="login col-5" action="/usuarios/login" method="post">
-        <h3 id="loginTitle">Login</h3>
-        <br />
-        <h4>Usuário:</h4>
-        <input type="text" name="userName"/><br />
-        <h4>Senha:</h4>
-        <input type="password" name="senha"/>
-        <button type="submit" id="enterbutton">Entrar</button>
-      </form>
+      <section class="formGenerico">
+        <form id="login" class="login col-6" action="/usuarios/login" method="post">
+          <h3 id="loginTitle">Login</h3>
+          <br />
+          <h4>Usuário:</h4>
+          <input type="text" name="userName"/><br />
+          <h4>Senha:</h4>
+          <input type="password" name="senha"/>
+          <button type="submit" id="enterbutton">Entrar</button>
+        </form>
+      </section>
       <% if(erroSenha) {%>
       <p>Ops, tivemos um erro com a senha, escreva de novo:</p>
       <%} %>

@@ -9,11 +9,11 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
     <script src='style.js' defer></script>
 </head>
-<body class="altura">
+<body>
         <%- include('../partials/header.ejs') %>
         <br>
-        <h1>Venha realizar seu sonho conosco!</h1>
-        <section class="container col-6">
+        <main class="container col-7 margem">
+            <h1>Venha realizar seu sonho conosco!</h1>
             <form class="login col-5" action="/usuarios/cadastroContratante" method="post">
             <h2>Cadastre-se</h2>
             <h4>Nome:</h4>
@@ -31,6 +31,6 @@
         <% if(mensagem){%>
             <p><%- mensagem %></p>
             <%} %>
-    </section>
+    </main>
 </body>
 </html>

@@ -7,12 +7,13 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
-    <script src='main.js'></script>
+    <script src='/style.js'></script>
 </head>
-<body>
+<body class="altura1">
+    <%- include('../partials/header.ejs') %>
+    <section class="col-6 margem">
     <h1>Olá, <%= nome %>, é bom te ver de novo!</h1>
     <h2>O que precisa para hoje?</h2>
-    <section class="col-6">
         <form action="/admin/setFuncionarioPagina">
             <h1>Querendo contratar alguém hoje?</h1>
             <button>Contratar</button>

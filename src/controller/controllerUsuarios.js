@@ -292,7 +292,8 @@ const editarInfos = async (req, res) => {
                     console.log("a autenticaçao funcionou");
                     const userName = req.body.userName;
                     const novaSenhaHash = await bcrypt.hash(senhaNua, 10);
-                    if(novaSenhaHash==null || novaSenhaHash == ""){
+                    if(senhaNua==null || senhaNua == ""){
+                        console.log("editou o nome")
                         const usuarioEditado = await usuarios.update({
                         userName: userName
                         }, {
@@ -304,6 +305,7 @@ const editarInfos = async (req, res) => {
                         return;
 
                     }else if(userName=="" || userName == null){
+                        console.log("editou a senha");
                         const usuarioEditado = await usuarios.update({
                         senha: novaSenhaHash
                         }, {
@@ -332,7 +334,7 @@ const editarInfos = async (req, res) => {
                     console.log("a autenticaçao funcionou");
                     const userName = req.body.userName;
                     const novaSenhaHash = await bcrypt.hash(senhaNua, 10);
-                    if(novaSenhaHash==""){
+                    if(senhaNua==""){
                         const FuncionarioEditado = await funcionarios.update({
                         userName: userName
                         }, {

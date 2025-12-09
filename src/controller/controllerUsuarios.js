@@ -261,7 +261,7 @@ const paginaPerfil = async (req, res) => {
                     where:{idUsuario: req.session.usuario.idUsuario}
                 });
                 res.status(200).render('usuario/perfilUsuario', { mensagem:null, usuario: usuario });
-            }else if(req.session.usuario.tipo == "funcionario"){
+            }else if(req.session.usuario.tipo == "Funcionario"){
                 const funcionario = await funcionarios.findOne({
                     where:{idFuncionario: req.session.usuario.idUsuario}
                 });
@@ -319,7 +319,7 @@ const editarInfos = async (req, res) => {
                     res.status(200).render('usuario/perfilUsuario', { mensagem: "Nada a alterar", usuario: usuarioLogado});
                     return
                 };
-        }else if(req.session.usuario.tipo == "funcionario"){
+        }else if(req.session.usuario.tipo == "Funcionario"){
             const FuncionarioLogado = await funcionarios.findOne({
                 where:{
                         idFuncionario: req.session.usuario.idUsuario

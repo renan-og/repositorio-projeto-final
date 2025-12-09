@@ -139,16 +139,17 @@ const excluirFuncionario = async (req, res) =>
     {
         const todosFuncionarios = await funcionarios.findAll();
         const idsFuncionarios = todosFuncionarios.map(funcionario => funcionario.idFuncionario);//mapeia o array de funcionarios e cria um novo array apenas com os ids
-        const juncoes = await festa_funcionario.findAll({where:{idFuncionario:{[Op.in]:idsFuncionarios}}});
+        const juncoes = await festa_funcionario.findAll({where:{idFuncionario:{idsFuncionarios}}});
 
         const idsFestas = juncoes.map(festa => festa.idFesta);
 
         const festasAtribuidas = await festasModel.findAll({where:{idFesta:{[Op.in]:idsFestas}}});
 
         const idFuncionario = req.body.idFuncionario;
+        await festa_funcionario.destroy({where:{idFuncionario: idFuncionario}});
         await funcionarios.destroy({where:{idFuncionario: idFuncionario}});
 
-        res.status(201).render('ADM/listarFuncionarios', { todosFuncionarios, festasAtribuidas: festasAtribuidas });
+        res.status(201).render('ADM/listarFuncionarios', { todosFuncionarios: todosFuncionarios});
     } catch(error)
     {
         console.error('Erro ao excluir usuario: '+error);

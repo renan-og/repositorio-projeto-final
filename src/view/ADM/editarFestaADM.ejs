@@ -6,7 +6,6 @@
     <title>Editar festa</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/col.css'>
     <script src='main.js'></script>
 </head>
 <body class="altura1">
@@ -14,17 +13,17 @@
     <section class="formGenerico margem">
         <h1>Editar Informações de uma festa:</h1>
         <form class="center col-6" action="/admin/atualizarFesta" method="post">
-            <input type="hidden" name="festaId" value="<%= festaId %>">
+            <input type="hidden" name="idFesta" value="<%= idFesta %>">
             <h4>Convidados</h4>
             <input type="text" name="qtdConvidados" placeholder="<%= qtdConvidados %>">
-            <h4>Horario</h4>
+            <h4>Horário</h4>
             <input type="text" name="horario"  placeholder="<%= horario %>">
             <h4>Data</h4>
             <input type="date" name="data" placeholder="<%= data %>"><br>
             <button type="submit">Confirmar edição</button>
         </form>
         <form action="/admin/excluirFesta" method="post">
-            <input type="hidden" name="festaId" value="<%= festaId %>">
+            <input type="hidden" name="idFesta" value="<%= idFesta %>">
             <button type="submit">Cancelar festa</button>
         </form>
         <hr>

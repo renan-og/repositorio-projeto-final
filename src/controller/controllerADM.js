@@ -187,14 +187,15 @@ const festasContratante = async (req, res) => {
 const editarFestasPage = async (req, res) => {
 
     try {
-        const festaId = parseInt(req.query.festaId)
+        const idFesta = parseInt(req.query.idFesta)
 
-        const festa = await festasModel.findByPk(festaId);//encontra a festa de acordo com a chave primaria
+        const festa = await festasModel.findByPk(idFesta);//encontra a festa de acordo com a chave primaria
 
         const qtdConvidados = festa.qtdConvidados
         const horario = festa.horario
         const data = festa.data
         res.render('ADM/editarFestaADM', {//renderiza a view com os dados a seguir
+            idFesta: idFesta,
             qtdConvidados,
             horario,
             data
@@ -208,7 +209,7 @@ const editarFestasPage = async (req, res) => {
 //função que de fato edita a festa
 const atualizarFesta = async (req, res) => {
     try {
-        const festaId = parseInt(req.body.festaId);
+        const idFesta = parseInt(req.body.idFesta);
         const qtdConvidados = parseInt(req.body.qtdConvidados)
         const horario = req.body.horario
         const data = req.body.data
@@ -219,10 +220,10 @@ const atualizarFesta = async (req, res) => {
             data: data
         }, {
             where: {
-                idFesta: festaId//encontra a festa com o mesmo id enviado pela view
+                idFesta: idFesta//encontra a festa com o mesmo id enviado pela view
             }
         });
-        res.status(200).render('ADM/editarFestaADM', { mensagem: "Festa atualizada com sucesso!", festaId, qtdConvidados, horario, data });
+        res.status(200).render('ADM/editarFestaADM', { mensagem: "Festa atualizada com sucesso!", idFesta, qtdConvidados, horario, data });
         console.log("Festa atualizada com sucesso!");
     } catch (error) {
         console.error(error);

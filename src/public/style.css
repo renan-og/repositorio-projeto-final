@@ -5,6 +5,9 @@
     transition-duration: 1s;
     text-decoration: none;
 }
+.sobre{
+  color: black;
+}
 .center{
   display: flex;
   flex-direction: column;

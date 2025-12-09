@@ -6,7 +6,6 @@
     <title>Criar Festa</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/style.css'>
-    <script src='/style.js' defer></script>
 </head>
 <body class="altura1">
     <%- include('../partials/header.ejs') %>
@@ -28,13 +27,15 @@
                 <input type="text" name="aniversariante">
                 <h4>Data</h4>
                 <input type="date" name="data">
-                <h4>horario</h4>
+                <h4>Horário</h4>
                 <select name="horario" id="">
+                    <option value=""></option>
                     <option value="12h a 17h">12h a 17h</option>
                     <option value="18h a 00h">18h a 00h</option>
                 </select>
                 <h4>Tema</h4>
                 <select name="tema">
+                    <option value=""></option>
                     <option value="Princesas">Princesas</option>
                     <option value="Ursinhos carinhosos">Ursinhos carinhosos</option>
                     <option value="Barbie">Barbie</option>
@@ -46,6 +47,7 @@
                 </select>
                 <h4>Local</h4>
                 <select name="local" id="">
+                    <option value=""></option>
                     <option value="Espaço Cristal Prime">Espaço Cristal Prime</option>
                     <option value="Jardim Secreto Eventos">Jardim Secreto Eventos</option>
                     <option value="Alegria & Companhia">Alegria & Companhia</option>

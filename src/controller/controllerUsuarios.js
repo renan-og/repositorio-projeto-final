@@ -140,7 +140,7 @@ const loginUsuario = async (req, res) =>
     
                 res.status(201).render('pages/FuncionarioMainPage', { nome: req.session.usuario.nome, festas: festasAtribuidas });
             }else if(funcionarioExistente == null){
-                res.status(200).render('pages/cadastroPage', {mensagem: "Parece que voce ainda nao esta cadastrado. Realize seu cadastro ja!!"});
+                res.status(200).render('pages/cadastroPage', {mensagem: "Parece que você ainda não está cadastrado. Realize seu cadastro já!!"});
                 return;
             }
         }
@@ -276,6 +276,7 @@ const paginaPerfil = async (req, res) => {
 const editarInfos = async (req, res) => {
     try{
         console.log("chegou pelo menos na edição");
+        console.log(req.session.usuario.tipo)
         if(req.session.usuario.tipo == "contratante"){
             console.log("chegou na edição");
             const usuarioLogado = await usuarios.findOne({
@@ -352,7 +353,7 @@ const editarInfos = async (req, res) => {
                                 idFuncionario: req.session.usuario.idUsuario
                             }
                         });
-                        res.status(200).render('usuario/perfilUsuario', { mensagem: "Atualização realizada com sucesso", usuario: usuarioEditado});
+                        res.status(200).render('usuario/perfilUsuario', { mensagem: "Atualização realizada com sucesso", usuario: FuncionarioEditado});
                         return;
                     }else{
                         const FuncionarioEditado = await funcionarios.update({
@@ -363,7 +364,7 @@ const editarInfos = async (req, res) => {
                                 idFuncionario: req.session.usuario.idUsuario
                             }
                         });
-                        res.status(200).render('usuario/perfilUsuario', { mensagem: "Atualização realizada com sucesso", usuario: usuarioEditado});
+                        res.status(200).render('usuario/perfilUsuario', { mensagem: "Atualização realizada com sucesso", usuario: FuncionarioEditado});
                         return;
                     }
                 }else{

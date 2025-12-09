@@ -14,6 +14,6 @@ router.post('/getFestasContratante', controllerADM.festasContratante);//ver fest
 router.post('/excluirFuncionario', controllerADM.excluirFuncionario);//excluir um usuario
 router.post('/excluirFesta', controllerADM.excluirFesta);//excluir uma festa
 router.get('/paginaEditarFesta', controllerADM.editarFestasPage);//pagina de edição de festa
-router.post('atualizarFesta', controllerADM.atualizarFesta);//editar uma festa
+router.post('/atualizarFesta', controllerADM.atualizarFesta);//editar uma festa
 
 module.exports = router

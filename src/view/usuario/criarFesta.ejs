@@ -10,7 +10,7 @@
 </head>
 <body class="altura1">
     <%- include('../partials/header.ejs') %>
-    <main class="container margem">
+    <main class="margem container">
     <% 
     if(nome)
         {%>    
@@ -23,7 +23,7 @@
     %>
 
         <section class="formGenerico">
-            <form action="/usuarios/novaFesta" method="POST" class="col-5">
+            <form class="center" action="/usuarios/novaFesta" method="POST" class="col-5">
                 <h4>Aniversariante</h4>
                 <input type="text" name="aniversariante">
                 <h4>Data</h4>
@@ -52,6 +52,7 @@
                 </select>
                 <h4>Quantos convidados?</h4>
                 <input type="text" name="qtdConvidados">
+                <br>
                 <button type="submit">Contratar</button>
             </form>
         </section>

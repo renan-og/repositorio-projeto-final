@@ -11,13 +11,12 @@
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
-    <h1>Festas Contratadas</h1>
+    <h1 class="margem">Festas Contratadas</h1>
     <dl class="lista col-7">
         <%
         if(festasContratadas.length != 0){ %><!--caso exista algo na tabela de festas, as exibe-->
             <% festasContratadas.forEach(festa=>{ %>
                 <hr>
-                <dt> Contratante: <%= nome %> </dt>
                 <dd> Aniversariante: <%= festa.aniversariante %></dd>
                 <dd> Data: <%= festa.data %></dd>
                 <dd> Tema: <%= festa.tema %></dd>

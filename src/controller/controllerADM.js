@@ -220,7 +220,7 @@ const atualizarFesta = async (req, res) => {
             data: data
         }, {
             where: {
-                id: festaId
+                idFesta: festaId//encontra a festa com o mesmo id enviado pela view
             }
         });
         res.status(200).render('ADM/editarFestaADM', { mensagem: "Festa atualizada com sucesso!", festaId, qtdConvidados, horario, data });

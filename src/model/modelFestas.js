@@ -10,7 +10,7 @@ const festas = sequelize.define('festa', {
         autoIncrement: true
     },
     data:{
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false
     },
     horario:{

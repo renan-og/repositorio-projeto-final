@@ -12,7 +12,7 @@
     <%- include('../partials/header.ejs') %>
     <section class="col-3 formGenerico margem">
         <h1>Contratar Funcionário</h1>
-        <form class="col-4" action="/admin/setFuncionario" method="post">
+        <form class="col-4 center" action="/admin/setFuncionario" method="post">
             <h4>Nome</h4>
             <input type="text" name="nome">
             <h4>CPF</h4>
@@ -32,7 +32,7 @@
                 <option value="Gerente de Eventos">Gerente de Eventos</option>
                 <option value="Cerimonialista">Cerimonialista</option>
                 <option value="Equipe de Limpeza">Equipe de Limpeza</option>
-            </select>
+            </select><br>
             <button type="submit">Contratar</button>
         </form>
     </section>

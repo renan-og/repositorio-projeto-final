@@ -193,33 +193,32 @@ const criarFesta = async (req, res) => {
         const idUsuario = parseInt(req.session.usuario.idUsuario);
         const qtdConvidados = req.body.qtdConvidados;
         const aniversariante = req.body.aniversariante;
-        
-        const festaExistente = await festasModel.findOne({where:{[Op.or]:{
-            horario:horario,
-            data:data,
-            local
-        }}});
-        if(festaExistente){
+        console.log("data: "+ data);
+        const festaExistente = await festasModel.findAll({where:{
+            data:data
+        }});
+        if(festaExistente.length != 0){
             res.status(500).render('usuario/criarFesta', {mensagem: "Ja existe uma festa agendada para esse salão nessa data e horario, sentimos muito:<", nome: req.session.usuario.nome});
             return;
+        }else{
+            const novaFesta = await festasModel.create({
+                data: data,
+                horario: horario,
+                idUsuario: idUsuario,
+                tema: tema,
+                local: local,
+                qtdConvidados: qtdConvidados,
+                aniversariante: aniversariante
+            });
+            const festasContratadas = await festasModel.findAll(
+                {
+                    where: {idUsuario: req.session.usuario.idUsuario}
+                }
+            );
+            console.log("funcionou")
+            res.status(201).render('usuario/festasContratadas', { nome: req.session.usuario.nome, festasContratadas });
         }
 
-        const novaFesta = await festasModel.create({
-            data: data,
-            horario: horario,
-            idUsuario: idUsuario,
-            tema: tema,
-            local: local,
-            qtdConvidados: qtdConvidados,
-            aniversariante: aniversariante
-        });
-        const festasContratadas = await festasModel.findAll(
-            {
-                where: {idUsuario: req.session.usuario.idUsuario}
-            }
-        );
-        console.log("funcionou")
-        res.status(201).render('usuario/festasContratadas', { nome: req.session.usuario.nome, festasContratadas });
 
     } catch (error) {
         console.error(error)

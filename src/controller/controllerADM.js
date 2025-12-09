@@ -179,7 +179,7 @@ const festasContratante = async (req, res) => {
         res.status(200).render('ADM/festasContratante', { festasContratadas }); //enviar todas as festas a página
     } catch (error) {
         console.error("ERRO INESPERADO",error);
-        res.status(500).render('ADM/festasContratante', { error, festasContratadas: []});
+        res.status(500).render('pages/paginaErro', { error });
     };
 
 };
@@ -189,13 +189,12 @@ const editarFestasPage = async (req, res) => {
     try {
         const festaId = parseInt(req.query.festaId)
 
-        const festa = await festasModel.findByPk(festaId);
+        const festa = await festasModel.findByPk(festaId);//encontra a festa de acordo com a chave primaria
 
         const qtdConvidados = festa.qtdConvidados
         const horario = festa.horario
         const data = festa.data
-        res.render('ADM/editarFestaADM', {
-            festaId,
+        res.render('ADM/editarFestaADM', {//renderiza a view com os dados a seguir
             qtdConvidados,
             horario,
             data
@@ -203,7 +202,7 @@ const editarFestasPage = async (req, res) => {
     } catch (error) {
         console.error(error)
         console.log("Deu erro", error)
-        res.status(500).render('ADM/editarFestaADM', { error });
+        res.status(500).render('pages/paginaErro', { error });
     };
 };
 //função que de fato edita a festa
@@ -227,7 +226,7 @@ const atualizarFesta = async (req, res) => {
         console.log("Festa atualizada com sucesso!");
     } catch (error) {
         console.error(error);
-        res.status(500).render('ADM/editarFestaADM', { error });
+        res.status(500).render('pages/paginaErro', { error });
     }
 };
 
@@ -237,12 +236,16 @@ const excluirFesta = async (req, res) => {
         const festaExcluida = await festas.destroy({
             where:
             {
-                id: idFesta
+                idFesta: idFesta
             }
         })
-        console.log("Festa excluída com sucesso!!")
+        console.log("Festa excluída com sucesso!!");
+        const todasFestas = await festasModel.findAll();
+
+        res.status(200).render('ADM/todasAsFestas', { todasFestas: todasFestas}); //
+
     } catch (error) {
-        console.log("Erro ao excluir festa: " + error)
+        console.log("pages/paginaErro: " + error)
     }
 };
 

@@ -23,7 +23,7 @@
             <input type="date" name="data" placeholder="<%= data %>"><br>
             <button type="submit">Confirmar edição</button>
         </form>
-        <form action="/admin/excluirFesta?_method=DELETE" method="post">
+        <form action="/admin/excluirFesta" method="post">
             <input type="hidden" name="festaId" value="<%= festaId %>">
             <button type="submit">Cancelar festa</button>
         </form>
